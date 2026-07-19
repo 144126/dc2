@@ -1,0 +1,510 @@
+{
+ "sectors": {
+  "fintech": {
+   "n": "Money & Payments",
+   "i": "Products that move, hold, and track money: the hardest problems to earn trust in, and the largest markets once you do."
+  },
+  "commerce": {
+   "n": "Marketplaces & Commerce",
+   "i": "Platforms that connect buyers with sellers, renters with homes, and customers with skilled hands."
+  },
+  "ai": {
+   "n": "AI & Data",
+   "i": "Tools that listen, summarize, and open up data. Each one is built for a gap the global platforms overlook."
+  },
+  "saas": {
+   "n": "Software for Businesses",
+   "i": "Software that runs someone's livelihood: a tailoring shop, a medical practice, a freelance career."
+  },
+  "devtools": {
+   "n": "Developer Tools",
+   "i": "Products built by developers, for developers: the picks and shovels of the software economy."
+  },
+  "social": {
+   "n": "Social & Events",
+   "i": "Places where people gather: to talk, to ask, to celebrate, and to be heard."
+  },
+  "education": {
+   "n": "Learning & Education",
+   "i": "Products that help people gain skills and make smarter decisions about their education."
+  },
+  "services": {
+   "n": "Studios & Service Firms",
+   "i": "Established firms inside the community: they generate revenue today and often fund the products of tomorrow."
+  },
+  "early": {
+   "n": "Early & In Preview",
+   "i": "Builds that exist but are not ready to present themselves. Every mature product on the previous pages once looked like this."
+  }
+ },
+ "products": [
+  {
+   "g": "cashwyre",
+   "n": "Cashwyre",
+   "u": "https://cashwyre.com",
+   "l": "cashwyre.com",
+   "r": "l",
+   "c": "fintech",
+   "o": "Spend cryptocurrency like everyday money, anywhere in Africa.",
+   "w": "Cashwyre is an app that lets people who hold Bitcoin or dollar-pegged digital currency use it directly: paying bills, buying airtime, getting a virtual dollar card, or sending money across borders, without first selling it on an exchange. Sign-up and identity checks take about five minutes.",
+   "h": "Millions of Africans hold digital currency as protection against weak local currencies, but spending it is clumsy. Cashwyre removes that friction, and also sells its payment rails to other businesses through APIs, giving it two ways to earn.",
+   "x": "The business-API side (payout, card, and wallet APIs) could become the bigger story for investors and deserves its own dedicated pitch. Clear licensing and compliance messaging would strengthen trust further."
+  },
+  {
+   "g": "debuspay",
+   "n": "Debuspay",
+   "u": "https://debus.com.ng",
+   "l": "debus.com.ng",
+   "r": "p",
+   "c": "fintech",
+   "o": "One wallet for bills, virtual dollar cards, and smart spending advice.",
+   "w": "Debuspay bundles everyday payments into a single wallet: airtime, data, electricity, TV, even flights, plus virtual dollar cards for online purchases. A built-in AI assistant reviews your spending, suggests budgets, and flags overspending automatically.",
+   "h": "Nigerians juggle several apps to run their financial lives. A single, well-executed wallet with a genuinely useful built-in money coach is a daily-use product, and daily use is what payment businesses are built on. The product is currently in waitlist stage with a launch countdown.",
+   "x": "Launching to its waitlist is the milestone that matters now. The AI money-coach angle is the differentiator worth leading with, since bill payment alone is a crowded field."
+  },
+  {
+   "g": "hedwig",
+   "n": "Hedwig",
+   "u": "https://hedwigbot.xyz",
+   "l": "hedwigbot.xyz",
+   "r": "l",
+   "c": "fintech",
+   "o": "A complete money desk for freelancers who earn from abroad.",
+   "w": "Hedwig gives a freelancer or small agency one account to invoice clients anywhere in the world, receive the money in minutes as USDC (a dollar-pegged digital currency), hold it safely, pay their team, and withdraw to a local bank in naira, shillings, cedis, and more. It charges nothing until money moves out: a flat 1% on withdrawal.",
+   "h": "African freelancers lose days and heavy fees waiting for international transfers. Hedwig collapses invoicing, holding, payroll, and settlement into one view. It has grown from a solo-freelancer tool into a small-team treasury, which is how serious payment companies start.",
+   "x": "Published security and custody details would help close larger teams. Case studies with named agencies would sharpen the story for investors."
+  },
+  {
+   "g": "kashlog",
+   "n": "Kashlog",
+   "u": "https://kashlog.com",
+   "l": "kashlog.com",
+   "r": "l",
+   "c": "fintech",
+   "o": "Simple, trustworthy bookkeeping for people and small businesses.",
+   "w": "Kashlog is a bookkeeping app for individuals, small businesses, and community groups: record income and expenses, organize them, and share the books with teammates so everyone sees the same trusted numbers.",
+   "h": "Most small Nigerian businesses keep records in notebooks or not at all, which locks them out of loans and makes fraud easy. Clean, shareable records are a quiet but real economic upgrade, and community groups (savings clubs, associations) are an underserved audience.",
+   "x": "Bank-statement import and simple reports (profit this month, top expenses) would deepen daily usefulness. The community-group use case could be its wedge into group treasurers nationwide."
+  },
+  {
+   "g": "nairaverse",
+   "n": "NairaVerse",
+   "u": "https://nairaverse.vercel.app",
+   "l": "nairaverse.vercel.app",
+   "r": "p",
+   "c": "fintech",
+   "o": "A concept for friendlier everyday digital banking.",
+   "w": "NairaVerse presents a digital banking experience: open an account from your phone in minutes, then spend, save, and track money in one place. Cards are marked as coming soon, and the product reads as an early concept build rather than a licensed bank.",
+   "h": "It demonstrates the builder's ambition and front-end craft in the most competitive consumer category in Nigeria.",
+   "x": "The honest next step is choosing a lane: partner with a licensed institution, or refocus the strong interface work on a narrower problem the builder can win alone."
+  },
+  {
+   "g": "ogasa",
+   "n": "Ogasa",
+   "u": "https://play.google.com/store/apps/details?id=com.ogasaairtime",
+   "l": "Google Play: Ogasa",
+   "r": "l",
+   "c": "fintech",
+   "o": "Send virtual gifts and airtime to people on their special days.",
+   "w": "Ogasa, on Google Play, describes itself as the first virtual gifting app for celebrants: friends and well-wishers send airtime and gifts to someone marking a birthday, wedding, or celebration, straight from their phone.",
+   "h": "Gifting at celebrations is a deep cultural habit; making it digital, instant, and long-distance-friendly turns a social ritual into a payments business with built-in virality: every celebration invites new users.",
+   "x": "Expanding gift types beyond airtime (cash pools, vouchers, registries) and adding shareable celebration pages would widen each event's reach."
+  },
+  {
+   "g": "stacklevest",
+   "n": "Stacklevest",
+   "u": "https://www.stacklevest.com",
+   "l": "stacklevest.com",
+   "r": "p",
+   "c": "fintech",
+   "o": "An investment platform, currently presenting itself app-first.",
+   "w": "Stacklevest's site renders as an application rather than a public brochure, so its full offering could not be reviewed from the outside. The name and structure indicate a savings or investment product.",
+   "h": "Investment access is one of the strongest consumer demands in Nigeria's middle class.",
+   "x": "A public landing page that explains the product without a login is the single highest-impact improvement: today, a curious investor or customer bounces off a blank screen."
+  },
+  {
+   "g": "settlla",
+   "n": "Settlla",
+   "u": "https://settlla.com",
+   "l": "settlla.com",
+   "r": "l",
+   "c": "commerce",
+   "o": "Renting a home in Nigeria, with the scams engineered out.",
+   "w": "Settlla is a rental marketplace where every tenant, landlord, and agent passes identity checks before entering. Listings are verified with photos and virtual tours, agent fees are fixed by the platform, and rent money sits in escrow until the tenant has keys in hand and confirms the home matches the listing. Every user signs a binding digital agreement, and Settlla states it refers fraud to the police and the EFCC with the evidence already compiled.",
+   "h": "Renting in Nigerian cities is notoriously risky: fake listings, disappearing agents, arbitrary fees. A platform that combines escrow with real legal consequences attacks the whole problem, not just the search.",
+   "x": "Publishing counts of verified listings and completed escrow transactions per city would turn its safety promise into measurable proof for investors."
+  },
+  {
+   "g": "chaise",
+   "n": "Chaise",
+   "u": "https://chaise.app/home",
+   "l": "chaise.app",
+   "r": "l",
+   "c": "commerce",
+   "o": "A marketplace for Africa's verified freelance talent.",
+   "w": "Chaise connects clients with vetted African freelancers across writing, technology, and design. It matches projects to talent with AI assistance and protects both sides with secure payments.",
+   "h": "Global freelance platforms take large cuts and often disadvantage African freelancers on payments and discovery. A platform built around verified African talent, with payment rails that work locally, serves both the diaspora hiring home and companies seeking cost-effective skill.",
+   "x": "Publishing completed-project numbers and freelancer earnings stories would build the trust flywheel faster. A niche focus (for example, African design talent) could sharpen early marketing."
+  },
+  {
+   "g": "helpa",
+   "n": "Helpa",
+   "u": "https://helpaservices.com",
+   "l": "helpaservices.com",
+   "r": "l",
+   "c": "commerce",
+   "o": "Find a verified, reviewed professional for any household job.",
+   "w": "Helpa is a marketplace for everyday services: cleaning, repairs, errands, moving, tutoring, design. Every provider verifies their national identity number (NIN) before taking a job, customer money sits in escrow until the job is confirmed done, and only paying clients can leave reviews. It is launching in Abuja with Lagos next.",
+   "h": "Hiring help in Nigeria runs on word of mouth, and it fails constantly: no-shows, overcharging, and worse. Helpa's own page collects real voices, like a designer with no clients because nobody can find him, and a plumber search that took three weeks. Structure, verification, and escrow fix a trust problem everyone recognizes.",
+   "x": "Winning one city visibly before expanding is the classic playbook here. Publishing provider earnings once live would attract the supply side, which is the harder side to build."
+  },
+  {
+   "g": "stuqet",
+   "n": "Stuqet",
+   "u": "https://stuqet.com",
+   "l": "stuqet.com",
+   "r": "l",
+   "c": "commerce",
+   "o": "A campus marketplace where students buy from sellers at their own university.",
+   "w": "Stuqet organizes commerce by school: students at Bingham, UNILAG, OAU, Babcock, and a dozen more universities browse fashion, food, electronics, and beauty products from student sellers on their own campus, with seller dashboards and flash sales built in.",
+   "h": "Campus commerce runs through WhatsApp statuses today: invisible, unsearchable, and trust-poor. Organizing it by school creates delivery-friendly density and a natural community of buyers and sellers who already trust each other.",
+   "x": "Campus ambassador programs and per-school seller leaderboards fit the product's structure naturally. Payments and delivery coordination per campus would deepen its moat."
+  },
+  {
+   "g": "kraemod",
+   "n": "Kraemod",
+   "u": "https://kraemod.vercel.app",
+   "l": "kraemod.vercel.app",
+   "r": "l",
+   "c": "commerce",
+   "o": "Launch a merchandise brand with no inventory and no upfront risk.",
+   "w": "Kraemod lets a creator design t-shirts, hoodies, and caps, set their own prices and margins, and open a storefront. Printing happens only when an order arrives, and Kraemod handles order management and payment processing. Production prices are listed in naira, starting around eleven thousand for a tee.",
+   "h": "Nigeria's creator economy (musicians, comedians, influencers, churches, campus groups) has an audience but no low-risk way to sell physical merchandise. Print-on-demand removes the inventory gamble that kills most merch ventures.",
+   "x": "Reliable production and delivery times are the make-or-break promise to keep publicly. Partnerships with a few visible creators would prove the model loudly."
+  },
+  {
+   "g": "reemsun",
+   "n": "REEMSUN",
+   "u": "https://reemsun.com",
+   "l": "reemsun.com",
+   "r": "l",
+   "c": "commerce",
+   "o": "An online store for fashion, hair, electronics, and everyday goods.",
+   "w": "REEMSUN is a working retail store selling across categories: human-hair units and wigs, clothing, fragrances, laptops, and accessories, with nationwide delivery, free returns on eligible orders, and protected payment.",
+   "h": "It represents the largest cohort in African tech: real commerce operating today, generating revenue transaction by transaction rather than waiting on venture scale.",
+   "x": "Focusing the brand on its strongest category (the hair and beauty depth stands out) would make marketing sharper than a general store can be. Social-commerce integration is the natural growth channel."
+  },
+  {
+   "g": "pulsepm",
+   "n": "PulsePM",
+   "u": "https://pulsepm.ai",
+   "l": "pulsepm.ai",
+   "r": "l",
+   "c": "ai",
+   "o": "A project-management workspace where AI does the tedious parts.",
+   "w": "PulsePM manages projects, sprints, tasks, and risks like familiar tools do, then adds an AI operator: photograph a whiteboard and it becomes a structured plan, incoming issues get triaged automatically, and status reports write themselves.",
+   "h": "Status updates and triage consume hours of every manager's week worldwide. This is DevCircles's clearest shot at a global software-as-a-service market, priced in dollars and sellable anywhere.",
+   "x": "Head-to-head positioning against the big incumbents ('your PM tool, minus the admin work') and a generous free tier for small teams would drive adoption. Publishing time-saved metrics from early users would sharpen the pitch."
+  },
+  {
+   "g": "last-minutes",
+   "n": "Last Minutes",
+   "u": "https://last-minutes.vercel.app",
+   "l": "last-minutes.vercel.app",
+   "r": "l",
+   "c": "ai",
+   "o": "Meeting transcription that actually understands Nigerian voices.",
+   "w": "Last Minutes turns spoken conversation into text and insight: live transcription or uploaded recordings up to 2GB, speaker identification, AI summaries with action items, and exports to standard document and subtitle formats. Its difference is first-class support for Nigerian languages, including the mid-sentence switching between English and local languages that real conversation is full of. Plans start free, with 15 hours monthly on the professional tier.",
+   "h": "Global transcription tools stumble on Nigerian accents and languages, and that gap covers hundreds of millions of speakers. Courts, hospitals, media houses, and businesses across West Africa need exactly this.",
+   "x": "Publishing accuracy benchmarks against the global tools on Nigerian speech would be a devastating marketing asset if the numbers hold. Enterprise deals with media and legal firms are the revenue path."
+  },
+  {
+   "g": "onyeakuko",
+   "n": "OnyeAkuko",
+   "u": "https://onyeakuko.online",
+   "l": "onyeakuko.online",
+   "r": "l",
+   "c": "ai",
+   "o": "An AI-curated front page for Nigerian and world news.",
+   "w": "OnyeAkuko (Igbo for 'storyteller') aggregates breaking news across Nigerian politics, business, and global events, using AI to curate a credible, continuously updated front page.",
+   "h": "News consumption in Nigeria is scattered across social media, where misinformation spreads fastest. A trusted, automatically curated aggregator is a daily-habit product with clear advertising potential.",
+   "x": "Credibility is the product: publishing how sources are selected and ranked would differentiate it from algorithmic feeds. Personalized topic-following and a daily briefing email or WhatsApp digest would build habit."
+  },
+  {
+   "g": "repoview",
+   "n": "RepoView",
+   "u": "https://gitrepoview.com",
+   "l": "gitrepoview.com",
+   "r": "l",
+   "c": "ai",
+   "o": "Your code updates, automatically turned into posts people can read.",
+   "w": "RepoView watches a developer's GitHub activity and turns commits into shareable, human-readable updates, distributing them across platforms so builders can keep shipping while their audience stays informed.",
+   "h": "'Building in public' is how modern developers and startups attract users, hiring interest, and investors, but writing those updates is a chore that gets skipped. Automating it serves a global audience of developers.",
+   "x": "Team and startup accounts (changelogs, investor updates) are a natural paid tier above the individual developer use case."
+  },
+  {
+   "g": "opennaijr",
+   "n": "opennaijR",
+   "u": "https://laws2020.github.io/opennaijR/",
+   "l": "laws2020.github.io/opennaijR",
+   "r": "l",
+   "c": "ai",
+   "o": "Nigeria's official economic data, one command away for any analyst.",
+   "w": "opennaijR is a free, open-source package for the R statistical language. It gives researchers clean, instant access to data from the Central Bank of Nigeria, the National Bureau of Statistics, and the Nigerian Exchange: discover a dataset, download it, and get analysis-ready tables in seconds instead of hours of manual cleaning.",
+   "h": "Bad data access quietly taxes every Nigerian economist, journalist, student, and policy analyst. Open infrastructure like this raises the quality of research about the country itself, and signals serious technical depth inside the community.",
+   "x": "A Python version would multiply its reach several-fold. Institutional adoption (universities, research desks, newsrooms) would cement it as national research infrastructure."
+  },
+  {
+   "g": "aso-akwa-riga",
+   "n": "Aso-Akwa-Riga",
+   "u": "https://www.aso-akwa-riga.com",
+   "l": "aso-akwa-riga.com",
+   "r": "l",
+   "c": "saas",
+   "o": "The operating system for a tailoring business.",
+   "w": "Aso-Akwa-Riga gives a tailor or fashion brand a complete toolkit: a public website from professional templates where customers request custom outfits without needing an account, plus a dashboard for measurements, orders, staff assignments, payment tracking, and branded invoices shared over WhatsApp. A directory helps customers find tailors by city and style.",
+   "h": "Tailoring is a massive, almost entirely offline Nigerian industry run through notebooks and WhatsApp chats. Software built around how tailors actually work (WhatsApp included, not ignored) can become the default tool of an entire trade.",
+   "x": "The directory could grow into the go-to way Nigerians find tailors, which then feeds the software side. Fabric suppliers and delivery partners are natural marketplace extensions."
+  },
+  {
+   "g": "medicsniche",
+   "n": "MedicsNiche",
+   "u": "https://medicsniche.com",
+   "l": "medicsniche.com",
+   "r": "l",
+   "c": "saas",
+   "o": "Connecting health expertise to the organizations that need it.",
+   "w": "MedicsNiche, an Abuja-based company, provides health services on three fronts: corporate health consultation for government and private organizations, training and research for health professionals and students, and digital health products. It partners with NGOs to reach underprivileged communities.",
+   "h": "Nigeria's health system leans heavily on outreach programs and NGO partnerships, and organizing the expert supply side of that market is valuable and defensible.",
+   "x": "Productizing its services (standard corporate health packages, a bookable expert network) would let it scale beyond a consultancy's hours. The digital-product line is where software leverage lives."
+  },
+  {
+   "g": "bluelines",
+   "n": "BlueLines",
+   "u": "https://app.bluelines.io",
+   "l": "app.bluelines.io",
+   "r": "l",
+   "c": "saas",
+   "o": "A straightforward app for managing a small business.",
+   "w": "BlueLines presents itself as the smart way to manage a business, delivered as a web application. The public page is minimal, with the product living behind a login.",
+   "h": "Small-business management tools have enormous reach when they nail one painful workflow.",
+   "x": "A public page that shows the product (screenshots, the core workflow, pricing) would let customers and partners evaluate it without signing up first: right now the door is closed to the curious."
+  },
+  {
+   "g": "scratch",
+   "n": "Scratch",
+   "u": "https://scratch.chidiorji.com",
+   "l": "scratch.chidiorji.com",
+   "r": "l",
+   "c": "saas",
+   "o": "One scratchpad for your notes and code snippets, on every device.",
+   "w": "Scratch is a cross-platform scratchpad: sign in with GitHub and your snippets and notes (stored as GitHub gists) follow you across every machine, always in sync.",
+   "h": "It solves a small but universal annoyance for developers with elegant simplicity, and shows the kind of polished tool-building instinct that compounds into bigger products.",
+   "x": "Team snippet libraries would be the paid tier if it grows. As-is, it is a strong portfolio piece and a genuinely useful free tool."
+  },
+  {
+   "g": "formonger",
+   "n": "Formonger",
+   "u": "https://formonger.com",
+   "l": "formonger.com",
+   "r": "l",
+   "c": "devtools",
+   "o": "Working web forms without building a server.",
+   "w": "Every website needs forms (contact, sign-up, feedback), and making them work normally requires backend programming. Formonger replaces that with a ready-made endpoint: point a form at it and validation, spam filtering, email notifications, and analytics are handled. Full legal and security policies are already published.",
+   "h": "This is a proven global category with paying customers worldwide, and Formonger's developer-first, API-first take is credibly executed, with unusually complete trust documentation for a young product.",
+   "x": "Integrations marketplace visibility (templates for popular site builders) and a generous free tier are the standard growth levers in this category. Competing on price for African developers is an available wedge."
+  },
+  {
+   "g": "devspax",
+   "n": "DevSpax",
+   "u": "https://devspax.com",
+   "l": "devspax.com",
+   "r": "l",
+   "c": "devtools",
+   "o": "Practice on real-world coding challenges, not textbook puzzles.",
+   "w": "DevSpax gives developers real-world coding challenges plus collaboration and learning resources, so skills grow against the kind of problems employers actually pay for.",
+   "h": "The gap between tutorial knowledge and job-ready skill is where most self-taught African developers get stuck. Challenge platforms that mirror real work close that gap and naturally connect to hiring.",
+   "x": "An employer-facing side (sponsored challenges as recruiting funnels) would create revenue and give learners direct job paths, following a model proven globally."
+  },
+  {
+   "g": "techtree",
+   "n": "TechTree",
+   "u": "https://techtree-nine.vercel.app/u/samuelibits",
+   "l": "techtree-nine.vercel.app",
+   "r": "l",
+   "c": "devtools",
+   "o": "A showcase directory for Nigeria's developers and their projects.",
+   "w": "TechTree, tagged 'Where Nigeria Builds', lets developers create profiles and showcase projects, making the country's talent discoverable in one place.",
+   "h": "Nigerian developers are hired worldwide, but discovery still runs through personal networks. A well-populated national showcase benefits every builder in it, including this community.",
+   "x": "Seeding it with DevCircles's own 38 products would be a fitting first move. Recruiter-facing features are the obvious long-term value."
+  },
+  {
+   "g": "opulentia-web-studio",
+   "n": "Opulentia Web Studio",
+   "u": "https://opulentia.studio",
+   "l": "opulentia.studio",
+   "r": "l",
+   "c": "devtools",
+   "o": "A web studio that measures itself on the sales its sites produce.",
+   "w": "Opulentia designs and builds websites with conversion as the explicit goal: clear messaging, fast load times, and analytics wired in from day one. It sells productized engagements, from a two-week launch sprint to ongoing growth retainers with monthly experiments.",
+   "h": "Most agencies sell appearance; Opulentia sells measurable revenue outcomes, with the disciplined packaging (fixed offerings, clear process) that lets a studio scale beyond its founder's hours.",
+   "x": "Published before-and-after case studies with real conversion numbers are the strongest sales asset this positioning can have; even two or three would set it apart."
+  },
+  {
+   "g": "yeittu",
+   "n": "Yeittu",
+   "u": "https://yeittu.com",
+   "l": "yeittu.com",
+   "r": "l",
+   "c": "social",
+   "o": "A social network where your voice, not your typing, is the point.",
+   "w": "Yeittu is built entirely around spoken audio: no text feed, no video algorithm. Communities gather in public, searchable voice spaces; a four-level discovery ladder lets a voice trend from neighborhood to city to country to continent; 'Chain Voices' lets many people build one collaborative recording with revenue shared automatically; and built-in translation preserves the speaker's actual voice across languages, with an AI companion, Zuri, to navigate it all.",
+   "h": "Every major platform treats voice as an afterthought, and billions of people express themselves better speaking than typing, in thousands of languages the internet ignores. The thinking here is genuinely original, not a clone of anything.",
+   "x": "The full vision is enormous; the way in is narrow: pick one community type and one city, prove people return daily, then let the trending ladder do its work. Its voice-translation technology could even stand alone as a licensable product."
+  },
+  {
+   "g": "ongist",
+   "n": "onGist",
+   "u": "https://ongist.com",
+   "l": "ongist.com",
+   "r": "l",
+   "c": "social",
+   "o": "A question-and-answer community, already alive with real conversation.",
+   "w": "onGist is a community platform where members ask questions, share answers, and climb a leaderboard by having answers accepted. It is visibly active today, with real members debating everything from fuel-subsidy policy to football and film.",
+   "h": "Live engagement is the hardest thing to fake and the thing most young social products never achieve. onGist demonstrably has conversation happening, which is the raw material of every community business.",
+   "x": "Topic hubs (a politics hub, a football hub) would give newcomers an immediate home. Expert-verified answers on serious topics could differentiate it from open forums."
+  },
+  {
+   "g": "wakatix",
+   "n": "WakaTix",
+   "u": "https://wakatix.com",
+   "l": "wakatix.com",
+   "r": "l",
+   "c": "social",
+   "o": "Sell and buy event tickets, from concerts to conferences.",
+   "w": "WakaTix ('waka' is Nigerian slang for movement) is a ticketing platform with the slogan 'your ticket to every vibe': event organizers list events and sell tickets, attendees discover and buy, with support and refund policies in place.",
+   "h": "Nigeria's live-event scene, from Afrobeats concerts to church conventions to campus shows, is booming, and ticketing still leaks revenue through informal channels. Ticketing businesses earn a percentage of every ticket, a proven model worldwide.",
+   "x": "Owning one event category first (campus events pair naturally with Stuqet's audience) beats competing everywhere at once. Organizer tools like gate check-in and payout speed are what win repeat events."
+  },
+  {
+   "g": "ummahsquare",
+   "n": "UmmahSquare",
+   "u": "https://ummahsquare.online",
+   "l": "ummahsquare.online",
+   "r": "p",
+   "c": "social",
+   "o": "A community platform built for the Muslim ummah.",
+   "w": "UmmahSquare's site currently renders as an application without a public description, so the full offering could not be reviewed from outside. The name indicates a gathering place ('square') for the Muslim community.",
+   "h": "Faith communities are among the most engaged audiences online, and Nigeria has one of the world's largest Muslim populations.",
+   "x": "A public landing page explaining the product is the immediate need; the builder's walkthrough will complete this profile."
+  },
+  {
+   "g": "dons-digital-academy",
+   "n": "Dons Digital Academy",
+   "u": "https://www.donsdigitalacademy.com",
+   "l": "donsdigitalacademy.com",
+   "r": "l",
+   "c": "education",
+   "o": "Live online classes teaching Africans high-income digital skills.",
+   "w": "Dons Digital Academy teaches digital skills through live classes, mentorship, and certification, and states an audience of over 50,000 African students building global careers.",
+   "h": "Digital skills are the most direct route from Nigeria's youth unemployment to global income, and education businesses earn revenue from day one. The stated scale, if borne out, already makes this one of the portfolio's largest operations.",
+   "x": "Publishing graduate outcomes (jobs landed, income earned) would transform marketing from promises into proof, and justify premium pricing."
+  },
+  {
+   "g": "edupeak",
+   "n": "EduPeak",
+   "u": "https://edupeak.com.ng",
+   "l": "edupeak.com.ng",
+   "r": "l",
+   "c": "education",
+   "o": "Data that tells students which university programs they can actually get into.",
+   "w": "EduPeak analyzes official university admission data: cutoff marks, state catchment advantages, and O-level requirements, helping Nigerian students target applications where they can realistically be admitted.",
+   "h": "Millions sit Nigeria's university entrance exams yearly, and most apply nearly blind, wasting fees and years on mismatched choices. Clear placement analytics directly changes life outcomes, and exam season makes demand predictable every single year.",
+   "x": "A guided recommendation flow ('enter your scores, see your best-fit programs') would turn data into a product every candidate wants, with school partnerships as the distribution channel."
+  },
+  {
+   "g": "downloadchow",
+   "n": "DownloadChow",
+   "u": null,
+   "l": "link pending",
+   "r": "u",
+   "c": "education",
+   "o": "Submitted by name only; awaiting a link from the builder.",
+   "w": "DownloadChow was submitted without a URL, and a public search did not surface a matching product, so nothing could be verified about it.",
+   "h": "Every submission represents a member's work; this one simply needs its link to join the showcase properly.",
+   "x": "The builder sharing a working link and a one-paragraph description will complete this profile in the next edition."
+  },
+  {
+   "g": "truewest-technologies",
+   "n": "Truewest Technologies",
+   "u": "https://truewesttechnologies.com",
+   "l": "truewesttechnologies.com",
+   "r": "l",
+   "c": "services",
+   "o": "A product studio building software, apps, and cloud systems for clients.",
+   "w": "Truewest Technologies, based in Rivers State with remote teams, builds digital products for startups, hotels, and enterprises: mobile apps, cloud infrastructure, software platforms, and AI solutions.",
+   "h": "Service firms convert Nigeria's engineering talent into revenue immediately, and the client work often surfaces the problems that become products later.",
+   "x": "A portfolio page with named projects and outcomes would do the heavy lifting in sales conversations. Choosing a specialty (its hotel-industry experience stands out) could raise both rates and referrals."
+  },
+  {
+   "g": "king-king-synergy",
+   "n": "King + King Synergy",
+   "u": "https://www.kingkingsynergy.com",
+   "l": "kingkingsynergy.com",
+   "r": "l",
+   "c": "services",
+   "o": "A registered maritime, energy, and procurement services company.",
+   "w": "King + King Synergy, a registered company operating from Port Harcourt, provides services across maritime and marine operations, energy solutions, procurement, workplace safety (HSE), and auctioneering, with contact points in Nigeria and the United States.",
+   "h": "It anchors the portfolio in Nigeria's oil-and-gas heartland economy, and shows the community's reach beyond pure software into industrial services where contracts are substantial.",
+   "x": "Sector certifications and completed-project references displayed prominently are what industrial clients check first; a digital procurement or logistics tool could grow out of its operations."
+  },
+  {
+   "g": "mip-network",
+   "n": "MIP Network",
+   "u": "https://mipnetwork.preview.haqqman.com",
+   "l": "mipnetwork.preview.haqqman.com",
+   "r": "p",
+   "c": "services",
+   "o": "A network platform in preview under the Haqqman studio.",
+   "w": "MIP Network sits on a preview address under Haqqman, an established Nigerian software studio, and is access-gated while in development, so its offering could not be reviewed externally.",
+   "h": "A preview deployment under a working studio's infrastructure signals a serious build in progress rather than an abandoned idea.",
+   "x": "This profile completes when the team opens the preview or shares a walkthrough."
+  },
+  {
+   "g": "signout",
+   "n": "SignOut",
+   "u": "https://signout-up8o.onrender.com",
+   "l": "signout-up8o.onrender.com",
+   "r": "p",
+   "c": "early",
+   "o": "An early build, live in two test deployments.",
+   "w": "SignOut is deployed twice on Render hosting, indicating active iteration, but the app presents no public description yet. Its product story awaits the builder's presentation.",
+   "h": "Deployed code, even undescribed, is further than most ideas ever get.",
+   "x": "A name-matching landing page and a two-line description would move it from mystery to showcase."
+  },
+  {
+   "g": "findash",
+   "n": "FinDash",
+   "u": "https://findashmvp.netlify.app",
+   "l": "findashmvp.netlify.app",
+   "r": "p",
+   "c": "early",
+   "o": "A finance dashboard at the minimum-viable stage.",
+   "w": "FinDash is an early finance dashboard deployed for feedback. The app renders for signed-in use rather than public browsing, so its feature set could not be reviewed externally.",
+   "h": "Financial dashboards are a proven category, and shipping an MVP for feedback is exactly the right stage discipline.",
+   "x": "A public demo mode with sample data would let anyone evaluate it in thirty seconds."
+  },
+  {
+   "g": "andiova",
+   "n": "Andiova",
+   "u": "https://www.andiova.com",
+   "l": "andiova.com",
+   "r": "u",
+   "c": "early",
+   "o": "A registered domain that was unreachable at review time.",
+   "w": "Andiova's domain is registered but did not resolve to a working site during this review, so nothing about the product could be verified.",
+   "h": "It is listed so the record of submissions stays complete and honest.",
+   "x": "A working link from the builder brings it into the next edition."
+  }
+ ]
+}
