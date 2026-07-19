@@ -1,5 +1,5 @@
-import type { Actions } from './$types';
-import { fail, redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { retrieve_one, upsert, uuid_from } from '$lib/server/qdrant';
 
@@ -9,8 +9,13 @@ const slugify = (s: string) =>
 		.replace(/[^a-z0-9]+/g, '-')
 		.replace(/^-+|-+$/g, '');
 
+export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.user) throw redirect(302, '/google');
+};
+
 export const actions: Actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
+		if (!locals.user) throw error(401, 'auth');
 		const fd = await request.formData();
 		const v = (k: string) => ((fd.get(k) as string) ?? '').trim();
 
@@ -55,6 +60,7 @@ export const actions: Actions = {
 					l,
 					r: 'u',
 					c: 'y',
+					e: locals.user.e,
 					o,
 					w: o,
 					h: '',

@@ -35,6 +35,9 @@
 	<div class="flex flex-wrap items-center gap-3">
 		<span class="text-xs tracking-wide text-cobalt uppercase">{sector_info[p.c]?.n}</span>
 		<StatusPill r={p.r} />
+		{#if data.u && data.u.e === p.e}
+			<a href="/{p.g}/edit" class="ml-auto text-sm text-cobalt hover:underline">edit your page</a>
+		{/if}
 	</div>
 
 	<h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink">{p.n}</h1>

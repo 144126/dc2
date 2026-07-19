@@ -13,7 +13,8 @@
 		"gen": "wrangler types"
 	},
 	"dependencies": {
-		"@qdrant/js-client-rest": "^1.18.0"
+		"@qdrant/js-client-rest": "^1.18.0",
+		"arctic": "^3.7.0"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-cloudflare": "^7.2.8",

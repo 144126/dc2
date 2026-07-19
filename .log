@@ -29,3 +29,5 @@ stack: /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714
 3:22:11 AM [vite] (client) page reload .svelte-kit/generated/root.js
 3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+3:28:53 AM [vite] .env changed, restarting server...
+3:28:53 AM [vite] server restarted.

@@ -1,18 +1,28 @@
 <script lang="ts">
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div class="flex min-h-screen flex-col bg-white text-ink">
 	<header class="border-b border-ink/10">
-		<nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+		<nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-5">
 			<a href="/" class="font-display text-xl font-semibold tracking-tight text-ink">
 				devcircles
 			</a>
-			<a href="/submit" class="text-sm text-cobalt hover:underline">submit</a>
+			<div class="flex items-center gap-4 text-sm">
+				<a href="/submit" class="text-cobalt hover:underline">submit</a>
+				{#if data.u}
+					<span class="text-ink/50">{data.u.e}</span>
+					<form method="POST" action="/logout">
+						<button type="submit" class="text-cobalt hover:underline">sign out</button>
+					</form>
+				{:else}
+					<a href="/google" class="text-cobalt hover:underline">sign in</a>
+				{/if}
+			</div>
 		</nav>
 	</header>
 
