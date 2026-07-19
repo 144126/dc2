@@ -20,7 +20,7 @@
 						<button type="submit" class="text-cobalt hover:underline">sign out</button>
 					</form>
 				{:else}
-					<a href="/google" class="text-cobalt hover:underline">sign in</a>
+					<a href="/google" data-sveltekit-reload class="text-cobalt hover:underline">sign in</a>
 				{/if}
 			</div>
 		</nav>
