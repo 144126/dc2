@@ -1,9 +1,12 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { slide } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import { sector_order, sector_info, sector_color } from '$lib/sectors';
 	import StatusPill from '$lib/status_pill.svelte';
 
 	let { data }: { data: PageData } = $props();
+	let open = $state(Object.fromEntries(sector_order.map((c) => [c, true])));
 
 	const total = $derived(data.p.length);
 	const live = $derived(data.p.filter((x) => x.r === 'l').length);
@@ -62,26 +65,51 @@
 	<div class="flex flex-col gap-14">
 		{#each groups as g (g.c)}
 			<div>
-				<div class="flex items-center gap-3 bg-cobalt px-5 py-3 text-white">
+				<button
+					type="button"
+					aria-expanded={open[g.c]}
+					onclick={() => (open[g.c] = !open[g.c])}
+					class="flex w-full items-center gap-3 bg-cobalt px-5 py-3 text-left text-white"
+				>
 					<span class="h-2.5 w-2.5 rounded-full {sector_color[g.c]}"></span>
 					<h2 class="font-display text-lg font-medium tracking-tight">
 						{sector_info[g.c].n}
 					</h2>
 					<span class="ml-auto text-sm text-white/70">{g.items.length}</span>
-				</div>
+					<svg
+						viewBox="0 0 20 20"
+						fill="none"
+						class="h-4 w-4 shrink-0 transition-transform duration-300 {open[g.c]
+							? 'rotate-0'
+							: '-rotate-90'}"
+					>
+						<path
+							d="M5 7.5l5 5 5-5"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						/>
+					</svg>
+				</button>
 				<p class="mt-3 max-w-2xl text-sm text-ink/60">{sector_info[g.c].i}</p>
-				<div class="mt-5 flex flex-col divide-y divide-ink/10 border-y border-ink/10">
-					{#each g.items as it (it.g)}
-						<a
-							href="/{it.g}"
-							class="flex flex-col gap-2 py-4 transition-colors hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6"
-						>
-							<span class="font-display w-48 shrink-0 font-medium text-ink">{it.n}</span>
-							<StatusPill r={it.r} />
-							<span class="text-sm text-ink/70">{it.o}</span>
-						</a>
-					{/each}
-				</div>
+				{#if open[g.c]}
+					<div
+						transition:slide={{ duration: 300, easing: cubicOut }}
+						class="mt-5 flex flex-col divide-y divide-ink/10 border-y border-ink/10"
+					>
+						{#each g.items as it (it.g)}
+							<a
+								href="/{it.g}"
+								class="flex flex-col gap-2 py-4 transition-colors hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6"
+							>
+								<span class="font-display w-48 shrink-0 font-medium text-ink">{it.n}</span>
+								<StatusPill r={it.r} />
+								<span class="text-sm text-ink/70">{it.o}</span>
+							</a>
+						{/each}
+					</div>
+				{/if}
 			</div>
 		{/each}
 	</div>

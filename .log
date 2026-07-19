@@ -13,3 +13,19 @@ Using secrets defined in .env
 Using secrets defined in .env
 *** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:1671: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY
 stack: /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@33b9d48 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20109b9 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206e2bc /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206dc76 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202b09c /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202aaf2 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fe0a32 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20680bf /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206b415 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fb1339 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432855 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432d78 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543082e /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543062e /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/adc/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98024
+3:21:31 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+3:21:31 AM [vite] (ssr) page reload src/routes/+page.svelte
+3:22:05 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+3:22:05 AM [vite] (ssr) page reload src/routes/+page.svelte
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/4.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+3:22:11 AM [vite] (client) page reload .svelte-kit/generated/root.js
+3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+3:22:11 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
