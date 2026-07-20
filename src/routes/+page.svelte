@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import favicon from '$lib/assets/favicon.png';
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { sector_order, sector_info, sector_color } from '$lib/sectors';
@@ -31,6 +32,7 @@
 		<p class="font-display text-sm font-semibold tracking-widest text-cobalt uppercase">
 			industry insight report
 		</p>
+		<img src={favicon} alt="" class="h-12 w-12" />
 		<h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
 			devcircles
 		</h1>
