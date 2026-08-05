@@ -195,6 +195,18 @@
    "x": "Focusing the brand on its strongest category (the hair and beauty depth stands out) would make marketing sharper than a general store can be. Social-commerce integration is the natural growth channel."
   },
   {
+   "g": "loamy",
+   "n": "Loamy",
+   "u": "https://loamy.braventiholdings.com.ng",
+   "l": "loamy.braventiholdings.com.ng",
+   "r": "p",
+   "c": "commerce",
+   "o": "Agri-trade infrastructure for Nigeria: financing, marketplace, and logistics in one place.",
+   "w": "Loamy has not launched. What is live today is a founding-member portal where farmers, traders, exporters, warehouse owners, logistics providers, input suppliers, and buyers register ahead of opening, pick which parts of the platform they want first access to, and watch a launch countdown. Each member gets a digital ID, a say in what gets built first, and a group chat with the team.",
+   "h": "Nigerian agriculture loses most of its value between the farm and the buyer: to credit that arrives too late, to produce that spoils in transit, and to prices set by whoever happens to show up. Treating financing, marketplace, and logistics as one problem rather than three is the right read of it, and signing up the supply side before opening is the right order to do it in.",
+   "x": "The countdown is a promise, and promises expire. Running one crop through one corridor end to end would prove more than launching all three lanes at once."
+  },
+  {
    "g": "pulsepm",
    "n": "PulsePM",
    "u": "https://pulsepm.ai",
@@ -303,6 +315,18 @@
    "x": "Team snippet libraries would be the paid tier if it grows. As-is, it is a strong portfolio piece and a genuinely useful free tool."
   },
   {
+   "g": "sparkles",
+   "n": "Sparkles",
+   "u": "https://www.sparkles.com.ng",
+   "l": "sparkles.com.ng",
+   "r": "p",
+   "c": "saas",
+   "o": "The operating system for a laundry business, branch by branch.",
+   "w": "Sparkles runs the floor of a laundry or dry-cleaning business: taking orders, issuing digital receipts, remembering customer preferences, controlling what each staff member can see and do, tracking inventory and expenses, and messaging customers on WhatsApp and SMS as their clothes move through the process. Orders can be taken with the network down and sync when it returns, and several branches are managed from one hub. It is in early access behind an email whitelist, priced from free up to ₦15,000 a month.",
+   "h": "Laundries run on paper tickets and memory, and the cost shows up as garments nobody can find and customers nobody calls back. The offline-first intake matters more here than any feature list, because a shop cannot stop accepting orders just because the network dropped.",
+   "x": "Early access is disciplined, but every week behind the whitelist is a week not learning from real shops. Letting a handful of multi-branch operators in and publishing what they change would carry further than a longer feature list."
+  },
+  {
    "g": "formonger",
    "n": "Formonger",
    "u": "https://formonger.com",
@@ -349,6 +373,18 @@
    "w": "Opulentia designs and builds websites with conversion as the explicit goal: clear messaging, fast load times, and analytics wired in from day one. It sells productized engagements, from a two-week launch sprint to ongoing growth retainers with monthly experiments.",
    "h": "Most agencies sell appearance; Opulentia sells measurable revenue outcomes, with the disciplined packaging (fixed offerings, clear process) that lets a studio scale beyond its founder's hours.",
    "x": "Published before-and-after case studies with real conversion numbers are the strongest sales asset this positioning can have; even two or three would set it apart."
+  },
+  {
+   "g": "peeng",
+   "n": "Peeng",
+   "u": "https://peeng.dev",
+   "l": "peeng.dev",
+   "r": "l",
+   "c": "devtools",
+   "o": "Send your logs somewhere that explains them back to you.",
+   "w": "Peeng gathers logs from every service an application runs on, makes them searchable by level, service, status, request, or user, and turns a stack trace into a plain-language explanation with a concrete next step. It alerts on thresholds with a cooldown so one incident does not become a hundred messages. There are JavaScript and Python SDKs that batch in the background, or a plain HTTP endpoint for teams that want no SDK at all. Free to start, with paid plans up to $35 a month.",
+   "h": "Observability is priced for companies that already employ a platform team, so smaller teams end up logging into servers and grepping by hand. A flat, cheap tier that answers \"what broke and why\" is the version of this category a two-person startup can actually adopt.",
+   "x": "The AI explanation is the reason to pick Peeng over a cheaper log bucket, so it belongs at the front of the pitch with real before-and-after incidents behind it. Tracing and metrics are the natural next surfaces."
   },
   {
    "g": "yeittu",
@@ -421,6 +457,18 @@
    "w": "EduPeak analyzes official university admission data: cutoff marks, state catchment advantages, and O-level requirements, helping Nigerian students target applications where they can realistically be admitted.",
    "h": "Millions sit Nigeria's university entrance exams yearly, and most apply nearly blind, wasting fees and years on mismatched choices. Clear placement analytics directly changes life outcomes, and exam season makes demand predictable every single year.",
    "x": "A guided recommendation flow ('enter your scores, see your best-fit programs') would turn data into a product every candidate wants, with school partnerships as the distribution channel."
+  },
+  {
+   "g": "campuspadi",
+   "n": "CampusPadi",
+   "u": "https://campuspadi.com",
+   "l": "campuspadi.com",
+   "r": "l",
+   "c": "education",
+   "o": "One app for class fees, receipts, and keeping your CGPA on track.",
+   "w": "CampusPadi gives Nigerian students a single place to pay class and departmental fees and get an instant receipt, track CGPA semester by semester, keep notes and past questions in a searchable vault, ask an AI study assistant questions, and find study groups and campus events. It installs as a phone app and keeps working offline. The core is free, with optional paid tiers.",
+   "h": "Class-fee collection today runs on a course rep, a bank account, and a folder of transfer screenshots. Charging nothing for the tools students use daily and earning on the payment they already make every semester is a sound way into a market that refills itself every year.",
+   "x": "The fee-and-receipt rail is the wedge and the study tools are what bring students back, so the growth motion is signing course reps and departments campus by campus rather than students one at a time."
   },
   {
    "g": "downloadchow",
