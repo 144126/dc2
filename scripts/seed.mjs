@@ -27,32 +27,49 @@ const uuid_from = (s) => {
 const ZV = new Array(4096).fill(0);
 const j = Math.floor(Date.now() / 1000);
 
-const points = seed.products.map((p) => ({
-	id: uuid_from(p.g),
-	vector: { i: ZV },
-	payload: {
-		s: 'adca',
-		t: 'p',
-		g: p.g,
-		n: p.n,
-		u: p.u ?? '',
-		l: p.l ?? '',
-		r: p.r,
-		c: sector_map[p.c],
-		o: p.o,
-		w: p.w,
-		h: p.h ?? '',
-		x: p.x ?? '',
-		d: '',
-		q: '',
-		m: '',
-		a: '',
-		z: '',
-		k: '',
-		b: { n: '', e: '', p: '', l: '', c: '' },
-		j
-	}
-}));
+const live = await fetch(env.QDRANT_URL + '/collections/i/points/scroll', {
+	method: 'POST',
+	headers: { 'content-type': 'application/json', 'api-key': env.QDRANT_KEY },
+	body: JSON.stringify({
+		filter: { must: [{ key: 's', match: { value: 'adca' } }, { key: 't', match: { value: 'p' } }] },
+		limit: 500,
+		with_payload: true,
+		with_vector: false
+	})
+})
+	.then((r) => r.json())
+	.then((r) => Object.fromEntries(r.result.points.map((pt) => [pt.payload.g, pt.payload])));
+
+const points = seed.products.map((p) => {
+	const was = live[p.g] ?? {};
+	return {
+		id: uuid_from(p.g),
+		vector: { i: ZV },
+		payload: {
+			s: 'adca',
+			t: 'p',
+			g: p.g,
+			n: p.n,
+			u: p.u ?? '',
+			l: p.l ?? '',
+			r: p.r,
+			c: sector_map[p.c],
+			o: p.o,
+			w: p.w,
+			h: p.h ?? '',
+			x: p.x ?? '',
+			d: was.d ?? '',
+			q: was.q ?? '',
+			m: was.m ?? '',
+			a: was.a ?? '',
+			z: was.z ?? '',
+			k: was.k ?? '',
+			e: was.e ?? '',
+			b: was.b ?? { n: '', e: '', p: '', l: '', c: '' },
+			j
+		}
+	};
+});
 
 const res = await fetch(env.QDRANT_URL + '/collections/i/points?wait=true', {
 	method: 'PUT',

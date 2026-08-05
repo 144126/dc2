@@ -6,5 +6,7 @@ import { retrieve_one, uuid_from } from '$lib/server/qdrant';
 export const load: PageServerLoad = async ({ params }) => {
 	const pt = await retrieve_one(env, await uuid_from(params.slug));
 	if (!pt || !pt.payload) throw error(404, 'not found');
-	return { p: pt.payload as Record<string, unknown> };
+	const p = pt.payload as Record<string, unknown>;
+	delete p.e;
+	return { p };
 };
