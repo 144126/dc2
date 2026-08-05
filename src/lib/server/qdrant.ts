@@ -35,8 +35,9 @@ export async function qc(env: QEnv): Promise<QdrantClient> {
 	return q;
 }
 
-export const ZV: number[] = new Array(3072).fill(0);
+export const ZV: number[] = new Array(4096).fill(0);
 export const C = 'i';
+export const V = 'i';
 
 export async function uuid_from(s: string): Promise<string> {
 	const h = new Uint8Array(
@@ -59,6 +60,8 @@ export async function ensure(env: QEnv): Promise<void> {
 	if (ensured) return;
 	const c = await qc(env);
 	await c.createPayloadIndex(C, { field_name: 'g', field_schema: 'keyword' }).catch(() => {});
+	await c.createPayloadIndex(C, { field_name: 's', field_schema: 'keyword' }).catch(() => {});
+	await c.createPayloadIndex(C, { field_name: 't', field_schema: 'keyword' }).catch(() => {});
 	ensured = true;
 }
 
@@ -86,7 +89,7 @@ export async function upsert(
 	points: { id: string; payload: Record<string, unknown> }[]
 ): Promise<void> {
 	if (!points.length) return;
-	await (await qc(env)).upsert(C, { points: points.map((p) => ({ ...p, vector: ZV })) });
+	await (await qc(env)).upsert(C, { points: points.map((p) => ({ ...p, vector: { [V]: ZV } })) });
 }
 
 export async function remove(env: QEnv, id: string): Promise<void> {

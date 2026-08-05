@@ -1,97 +1,42 @@
+$ vite dev
+Port 4320 is in use, trying another one...
 
-> adc@0.0.1 dev /home/ed/i/dc2
-> vite dev
+  VITE v8.1.5  ready in 2726 ms
 
-
-  VITE v8.1.5  ready in 1823 ms
-
-  ➜  Local:   http://localhost:4320/
+  ➜  Local:   http://localhost:4321/
   ➜  Network: use --host to expose
   ➜  press h + enter to show help
 Using secrets defined in .env
-[GOOGLE] GET { full_url: 'http://localhost:4320/google', has_user: false }
-[GOOGLE] params { has_code: false, state: null }
-[GOOGLE] constructing client... {
-  origin: 'http://localhost:4320',
-  id_type: 'string',
-  id_has_get: false,
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  secret_preview: 'GOCSPX-YtPmZ...'
-}
-[GOOGLE] client constructed {
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  redirect_uri: 'http://localhost:4320/google'
-}
-[GOOGLE] redirecting to auth_url {
-  auth_url: 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=508615742368-ob5ibg2a6ns36nma9lu7b8anajalqk14.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A4320%2Fgoogle&state=UcxZglZIFE7dJL5-YiFhDV-to0KcYoKBWRI0D5KumWo&code_challenge_method=S256&code_challenge=mba0KZrJS5vh_LGT5oNoAadqae1SFp2W4YlkKW31jQk&scope=openid+email'
-}
-[GOOGLE] redirecting...
-5:37:46 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
-5:37:46 AM [vite] (ssr) page reload src/routes/+layout.svelte
-[GOOGLE] GET { full_url: 'http://localhost:4320/google', has_user: false }
-[GOOGLE] params { has_code: false, state: null }
-[GOOGLE] constructing client... {
-  origin: 'http://localhost:4320',
-  id_type: 'string',
-  id_has_get: false,
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  secret_preview: 'GOCSPX-YtPmZ...'
-}
-[GOOGLE] client constructed {
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  redirect_uri: 'http://localhost:4320/google'
-}
-[GOOGLE] redirecting to auth_url {
-  auth_url: 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=508615742368-ob5ibg2a6ns36nma9lu7b8anajalqk14.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A4320%2Fgoogle&state=O9Ks16jZnL24BZDz80hFZ50jsVE_6qHzDDOZtceAQgk&code_challenge_method=S256&code_challenge=jldrN6GCSmwDfKANM8y1G_HMm5dNaATVBQhnrh_JWlA&scope=openid+email'
-}
-[GOOGLE] redirecting...
-[GOOGLE] GET { full_url: 'http://localhost:4320/google', has_user: false }
-[GOOGLE] params { has_code: false, state: null }
-[GOOGLE] constructing client... {
-  origin: 'http://localhost:4320',
-  id_type: 'string',
-  id_has_get: false,
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  secret_preview: 'GOCSPX-YtPmZ...'
-}
-[GOOGLE] client constructed {
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  redirect_uri: 'http://localhost:4320/google'
-}
-[GOOGLE] redirecting to auth_url {
-  auth_url: 'https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=508615742368-ob5ibg2a6ns36nma9lu7b8anajalqk14.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A4320%2Fgoogle&state=c9shQQ9SlNemdnnTQuAgingPU8EZoAF-VL9uZRd4bhw&code_challenge_method=S256&code_challenge=wSnfjLCrtMwvUbIJHmUq5ZCfJRqjjK8ZLj7pAe2SBEc&scope=openid+email'
-}
-[GOOGLE] redirecting...
-[GOOGLE] GET {
-  full_url: 'http://localhost:4320/google?state=c9shQQ9SlNemdnnTQuAgingPU8EZoAF-VL9uZRd4bhw&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0AXEQxIAQh1o9KMO3Bg0xVtpZ3TlJ9RU6ehx5vjd6lfGVOO4nqTtXuZXm_R_vylBktNnh-w&scope=email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent',
-  has_user: false
-}
-[GOOGLE] params {
-  has_code: true,
-  state: 'c9shQQ9SlNemdnnTQuAgingPU8EZoAF-VL9uZRd4bhw'
-}
-[GOOGLE] callback cookies {
-  has_stored_state: true,
-  has_stored_verifier: true,
-  state_matches: true
-}
-[GOOGLE] constructing client... {
-  origin: 'http://localhost:4320',
-  id_type: 'string',
-  id_has_get: false,
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  secret_preview: 'GOCSPX-YtPmZ...'
-}
-[GOOGLE] client constructed {
-  id_preview: '508615742368-ob5ibg2a6ns36nm...',
-  redirect_uri: 'http://localhost:4320/google'
-}
-[GOOGLE] validating authorization code...
-[GOOGLE] token validation succeeded
-[GOOGLE] fetching userinfo...
-[GOOGLE] userinfo response { status: 200, ok: true }
-[GOOGLE] got email { email: '1440fl@gmail.com' }
-[GOOGLE] session set, redirecting to /
-5:39:14 AM [vite] (client) hmr update /src/routes/+layout.svelte, /src/app.css
-5:39:14 AM [vite] (ssr) page reload src/routes/+layout.svelte
-5:43:45 AM [vite] (client) hmr update /src/routes/+layout.svelte
+Using secrets defined in .env
+*** Fatal uncaught kj::Exception: workerd/util/sqlite.c++:844: failed: SENTRY_DO SQLite failed; NOSENTRY database is locked: SQLITE_BUSY (extended: SQLITE_BUSY_RECOVERY)
+stack: /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@33af68b /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@2010925 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206e2bc /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206dc76 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202b09c /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@202aaf2 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fe0a32 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@20680bf /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@206b415 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1fb1339 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432855 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@5432d78 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543082e /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@543062e /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98d17 /usr/lib/libc.so.6@2abfb /usr/lib/libc.so.6@2acb4 /home/ed/i/dc2/node_modules/.pnpm/@cloudflare+workerd-linux-64@1.20260714.1/node_modules/@cloudflare/workerd-linux-64/bin/workerd@1f98024
+11:18:29 AM [vite] (client) hmr update /src/app.css
+11:18:29 AM [vite] (ssr) page reload src/lib/server/qdrant.ts
+11:18:33 AM [vite] (client) hmr update /src/app.css
+11:18:33 AM [vite] (ssr) page reload src/lib/server/qdrant.ts
+11:18:40 AM [vite] (client) hmr update /src/app.css
+11:18:40 AM [vite] (ssr) page reload scripts/seed.mjs
+11:19:15 AM [vite] (client) hmr update /src/app.css
+11:19:15 AM [vite] (ssr) page reload src/lib/server/qdrant.ts
+
+[1;31m[500] GET /[0m
+TypeError: Cannot read properties of undefined (reading 'localeCompare')
+    at /home/ed/i/dc2/src/routes/+page.svelte:38:24
+    at Array.sort (<anonymous>)
+    at /home/ed/i/dc2/src/routes/+page.svelte:38:5
+    at /home/ed/i/dc2/node_modules/.pnpm/svelte@5.56.6/node_modules/svelte/src/internal/server/index.js:445:12
+    at /home/ed/i/dc2/node_modules/.pnpm/svelte@5.56.6/node_modules/svelte/src/internal/server/index.js:498:28
+    at /home/ed/i/dc2/src/routes/+page.svelte:28:8
+    at Renderer.child (node_modules/.pnpm/svelte@5.56.6/node_modules/svelte/src/internal/server/renderer.js:214:18)
+    at Renderer.component (node_modules/.pnpm/svelte@5.56.6/node_modules/svelte/src/internal/server/renderer.js:319:22)
+    at _page (src/routes/+page.svelte:23:13)
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:21:32 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+11:21:32 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:21:32 AM [vite] (client) page reload .svelte-kit/generated/root.js
+11:21:32 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:21:33 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

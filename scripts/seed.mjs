@@ -24,12 +24,12 @@ const uuid_from = (s) => {
 	return `${h.slice(0, 8)}-${h.slice(8, 12)}-4${h.slice(13, 16)}-8${h.slice(17, 20)}-${h.slice(20, 32)}`;
 };
 
-const ZV = new Array(3072).fill(0);
+const ZV = new Array(4096).fill(0);
 const j = Math.floor(Date.now() / 1000);
 
 const points = seed.products.map((p) => ({
 	id: uuid_from(p.g),
-	vector: ZV,
+	vector: { i: ZV },
 	payload: {
 		s: 'adca',
 		t: 'p',

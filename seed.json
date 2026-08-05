@@ -423,16 +423,16 @@
    "x": "A guided recommendation flow ('enter your scores, see your best-fit programs') would turn data into a product every candidate wants, with school partnerships as the distribution channel."
   },
   {
-    "g": "downloadchow",
-    "n": "DownloadChow",
-    "u": "https://www.downloadchow.com",
-    "l": "downloadchow.com",
-    "r": "l",
-    "c": "food",
-    "o": "A food ordering and delivery platform connecting customers with local restaurants, bars, and cafés by locality.",
-    "w": "DownloadChow simplifies food orders and deliveries, letting customers browse nearby restaurants within a chosen radius and order directly from vendors across Nigeria.",
-    "h": "Food delivery is one of the most repeatable, high-frequency internet businesses in Nigeria, and a locality-first discovery model fits how people actually eat.",
-    "x": "Adding cuisine filters, sticky vendor onboarding, and a clear delivery-coverage map would deepen both demand and supply on the platform."
+   "g": "downloadchow",
+   "n": "DownloadChow",
+   "u": "https://www.downloadchow.com",
+   "l": "downloadchow.com",
+   "r": "l",
+   "c": "commerce",
+   "o": "A food ordering and delivery platform connecting customers with local restaurants, bars, and cafés by locality.",
+   "w": "DownloadChow simplifies food orders and deliveries, letting customers browse nearby restaurants within a chosen radius and order directly from vendors across Nigeria.",
+   "h": "Food delivery is one of the most repeatable, high-frequency internet businesses in Nigeria, and a locality-first discovery model fits how people actually eat.",
+   "x": "Adding cuisine filters, sticky vendor onboarding, and a clear delivery-coverage map would deepen both demand and supply on the platform."
   },
   {
    "g": "truewest-technologies",
