@@ -57,3 +57,22 @@ TypeError: Cannot read properties of undefined (reading 'localeCompare')
 11:49:06 AM [vite] (client) page reload .svelte-kit/generated/root.js
 11:49:06 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
 11:49:06 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte
+11:56:49 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:56:49 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:56:55 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:56:55 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:57:02 AM [vite] (client) hmr update /src/routes/+page.svelte, /src/app.css
+11:57:02 AM [vite] (ssr) page reload src/routes/+page.svelte
+11:57:17 AM [vite] (client) hmr update /src/app.css
+11:57:17 AM [vite] (ssr) page reload scripts/seed.mjs
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/0.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/1.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/2.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/nodes/3.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/app.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/client/matchers.js
+11:57:50 AM [vite] (ssr) page reload .svelte-kit/generated/shared/error-template.js
+11:57:50 AM [vite] (ssr) page reload .svelte-kit/generated/server/internal.js
+11:57:50 AM [vite] (client) page reload .svelte-kit/generated/root.js
+11:57:50 AM [vite] (ssr) page reload .svelte-kit/generated/root.js
+11:57:50 AM [vite] (ssr) page reload .svelte-kit/generated/root.svelte

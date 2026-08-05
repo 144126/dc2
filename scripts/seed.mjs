@@ -71,6 +71,13 @@ const points = seed.products.map((p) => {
 	};
 });
 
+for (const [k, v] of Object.entries(seed.sectors))
+	points.push({
+		id: uuid_from('sector:' + sector_map[k]),
+		vector: { i: ZV },
+		payload: { s: 'adca', t: 'sec', g: sector_map[k], n: v.n.toLowerCase(), j: 0 }
+	});
+
 const res = await fetch(env.QDRANT_URL + '/collections/i/points?wait=true', {
 	method: 'PUT',
 	headers: { 'content-type': 'application/json', 'api-key': env.QDRANT_KEY },

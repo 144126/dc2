@@ -3,7 +3,7 @@
 	import favicon from '$lib/assets/favicon.png';
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-	import { sector_color, status_legend } from '$lib/sectors';
+	import { sector_color, sector_info, sector_order, status_legend } from '$lib/sectors';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -14,6 +14,11 @@
 	let live_only = $state(false);
 
 	const status_rank: Record<string, number> = { l: 0, p: 1, u: 2 };
+
+	const rank = (c: string) => {
+		const i = (sector_order as readonly string[]).indexOf(c);
+		return i < 0 ? sector_order.length : i;
+	};
 
 	const filtered = $derived(
 		data.p.filter(
@@ -33,9 +38,9 @@
 					.sort(
 						(a, b) => (status_rank[a.r] ?? 3) - (status_rank[b.r] ?? 3) || a.n.localeCompare(b.n)
 					);
-				return { c, n: items[0]?.cn || c, items };
+				return { c, n: items[0]?.cn || sector_info[c]?.n || c, items };
 			})
-			.sort((a, b) => a.n.localeCompare(b.n))
+			.sort((a, b) => rank(a.c) - rank(b.c) || a.n.localeCompare(b.n))
 	);
 	const is_filtering = $derived(qy !== '' || live_only);
 </script>
