@@ -16,7 +16,7 @@
 		{ "binding": "GOOGLE_ID", "store_id": "45748cb1c67946df943075fa14cb8815", "secret_name": "DEV_CIRCLES_GOOGLE_ID" },
 		{ "binding": "GOOGLE_SECRET", "store_id": "45748cb1c67946df943075fa14cb8815", "secret_name": "DEV_CIRCLES_GOOGLE_SECRET" },
 		{ "binding": "SECRET", "store_id": "45748cb1c67946df943075fa14cb8815", "secret_name": "SECRET" },
-		{ "binding": "GEMINI", "store_id": "45748cb1c67946df943075fa14cb8815", "secret_name": "DEV_CIRCLES_GEMINI" }
+		{ "binding": "GEMINI", "store_id": "45748cb1c67946df943075fa14cb8815", "secret_name": "GEMINI" }
 	],
 	"routes": [
 		{ "pattern": "devcircles.apexlinks.org", "custom_domain": true }
