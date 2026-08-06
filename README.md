@@ -26,6 +26,16 @@ sveltekit site listing products built by the devcircles community. collection `i
 | z | team size text |
 | k | proudest metric text |
 | b | builder contact object: `{ n name, e email, p phone, l linkedin, c location }` |
+| hm | headline metric value, the one number shown on the card |
+| hl | headline metric label, e.g. `monthly transaction volume` |
+| hv | headline verification: `v` verified by devcircles, `s` self-reported |
+| sg | stage: `i` idea, `b` in beta, `l` launched, `r` making revenue, `s` scaling |
+| ra | raising: `y` / `n` / empty |
+| rt | raise target, free text |
+| fp | founder photo url |
+| ev | evidence: what was checked, or a link to it |
+| vd | link last verified, ISO date string |
+| hj | epoch seconds when the builder last confirmed their figures |
 
 ## sector chars
 
@@ -40,6 +50,14 @@ sveltekit site listing products built by the devcircles community. collection `i
 | e | education |
 | v | services |
 | y | early |
+
+## row types
+
+| t | meaning |
+| --- | --- |
+| p | product |
+| sec | sector |
+| x | investor interest, `{ pg product slug, nm name, em email, fm firm, ms message, j epoch }` |
 
 ## dev
 
