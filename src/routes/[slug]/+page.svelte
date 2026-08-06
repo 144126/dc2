@@ -43,6 +43,19 @@
 		].filter((c) => c.v)
 	);
 
+	const ld = $derived(
+		JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareApplication',
+			name: p.n,
+			description: p.o,
+			url: p.u,
+			applicationCategory: p.cn || p.c,
+			...(b.n ? { author: { '@type': 'Person', name: b.n } } : {}),
+			...(p.d ? { datePublished: p.d } : {})
+		})
+	);
+
 	const detail = $derived(p.w && p.w !== p.o ? p.w : '');
 	const has_analysis = $derived(!!(detail || p.h || p.x));
 </script>
@@ -52,6 +65,10 @@
 	<meta name="description" content={p.o} />
 	<meta property="og:title" content={p.n} />
 	<meta property="og:description" content={p.o} />
+	<meta property="og:url" content="https://devcircles.apexlinks.org/{p.g}" />
+	<meta property="og:type" content="article" />
+	<link rel="canonical" href="https://devcircles.apexlinks.org/{p.g}" />
+	{@html `<script type="application/ld+json">${ld}<` + `/script>`}
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-6 py-16">

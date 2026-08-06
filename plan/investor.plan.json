@@ -182,7 +182,7 @@
 		"c": {
 			"structured_data": {
 				"s": "Add JSON-LD to every product page so search engines and link unfurlers understand what each page describes.\n\nFILE: src/routes/[slug]/+page.svelte\n\nIn the script block add:\n\n\tconst ld = $derived(\n\t\tJSON.stringify({\n\t\t\t'@context': 'https://schema.org',\n\t\t\t'@type': 'SoftwareApplication',\n\t\t\tname: p.n,\n\t\t\tdescription: p.o,\n\t\t\turl: p.u,\n\t\t\tapplicationCategory: p.cn || p.c,\n\t\t\t...(b.n ? { author: { '@type': 'Person', name: b.n } } : {}),\n\t\t\t...(p.d ? { datePublished: p.d } : {})\n\t\t})\n\t);\n\nInside the existing `<svelte:head>` block, after the last meta tag, add:\n\n\t<link rel=\"canonical\" href=\"https://devcircles.apexlinks.org/{p.g}\" />\n\t{@html `<script type=\"application/ld+json\">${ld}<` + `/script>`}\n\nThe split closing tag is required: Svelte's compiler ends the component's own script block at a literal `</script>` inside a template string.\n\nAlso strengthen the shared description. The head currently sets `<meta name=\"description\" content={p.o} />`. Leave it, and add beneath the og tags:\n\n\t<meta property=\"og:url\" content=\"https://devcircles.apexlinks.org/{p.g}\" />\n\t<meta property=\"og:type\" content=\"article\" />",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '<meta property=\"og:description\" content={p.o} />' src/routes/[slug]/+page.svelte",
 				"t": "bash plan/verify_tests.sh && grep -qF 'application/ld+json' src/routes/[slug]/+page.svelte && grep -qF 'rel=\"canonical\"' src/routes/[slug]/+page.svelte && pnpm test && pnpm check && pnpm build"
 			},
