@@ -102,7 +102,7 @@
 	},
 	"home": {
 		"s": "rebuild the landing page as a deal feed — this is the three-second surface",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"home_hero": {
@@ -125,7 +125,7 @@
 			},
 			"home_two_views": {
 				"s": "Make the traction-ordered list the default view and demote sector browsing to a toggle.\n\nAn investor arriving cold does not think 'show me fintech', they think 'show me what is working'. Sector-first structure buries the strongest company on the page under a heading it has nothing to do with. But sector browsing is genuinely useful once someone has a thesis, so it stays — one tap away.\n\nFILE: src/routes/+page.svelte\n\nIn the script block add the import:\n\n\timport { by_momentum } from '$lib/investor';\n\timport DealCard from '$lib/deal_card.svelte';\n\nand the state plus the ordered list:\n\n\tlet by_sector = $state(false);\n\tconst ranked = $derived([...filtered].sort(by_momentum));\n\nIn the markup, wrap the existing `{#each groups as g (g.c)}` block so it only renders in sector mode, and put the ranked list in front of it. Replace the opening of the products section, currently:\n\n\t<section class=\"mx-auto max-w-5xl px-6 py-16\">\n\t\t<div class=\"flex flex-col gap-14\">\n\t\t\t{#each groups as g (g.c)}\n\nwith:\n\n\t<section class=\"mx-auto max-w-5xl px-6 py-16\">\n\t\t<div class=\"mb-8 flex items-center gap-4 text-sm\">\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tonclick={() => (by_sector = false)}\n\t\t\t\tclass={by_sector ? 'text-ink/50 hover:text-ink' : 'font-medium text-cobalt underline'}\n\t\t\t>\n\t\t\t\tby traction\n\t\t\t</button>\n\t\t\t<button\n\t\t\t\ttype=\"button\"\n\t\t\t\tonclick={() => (by_sector = true)}\n\t\t\t\tclass={by_sector ? 'font-medium text-cobalt underline' : 'text-ink/50 hover:text-ink'}\n\t\t\t>\n\t\t\t\tby sector\n\t\t\t</button>\n\t\t</div>\n\t\t{#if !by_sector}\n\t\t\t<div class=\"flex flex-col divide-y divide-ink/10 border-y border-ink/10\">\n\t\t\t\t{#each ranked as it (it.g)}\n\t\t\t\t\t<DealCard p={it} />\n\t\t\t\t{/each}\n\t\t\t</div>\n\t\t{/if}\n\t\t<div class=\"flex flex-col gap-14\" class:hidden={!by_sector}>\n\t\t\t{#each groups as g (g.c)}\n\nThe rest of the sector block, down to and including its closing `{/each}`, is untouched. The `no products match your search` paragraph must end up outside the `class:hidden` div so it still shows in traction mode — move it to just before the section's closing `</section>` tag and leave its markup otherwise identical.\n\nAlso swap the inner rows of the sector view to the same component so the two views cannot drift: inside `{#each g.items as it (it.g)}`, replace the whole `<a href=\"/{it.g}\" ...>...</a>` element with `<DealCard p={it} />`.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '{#each groups as g (g.c)}' src/routes/+page.svelte",
 				"t": "bash plan/verify_tests.sh && grep -qF 'by traction' src/routes/+page.svelte && grep -qF 'by sector' src/routes/+page.svelte && grep -qF 'by_momentum' src/routes/+page.svelte && grep -qF '<DealCard' src/routes/+page.svelte && pnpm test && pnpm check && pnpm build"
 			}

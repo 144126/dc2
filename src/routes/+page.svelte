@@ -4,12 +4,14 @@
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { sector_color, sector_info, sector_order, status_legend } from '$lib/sectors';
-	import { is_fresh } from '$lib/investor';
+	import { is_fresh, by_momentum } from '$lib/investor';
+	import DealCard from '$lib/deal_card.svelte';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
 	let { data }: { data: PageData } = $props();
 	let open = $state<Record<string, boolean>>({});
+	let by_sector = $state(false);
 
 	let qy = $state('');
 	let live_only = $state(false);
@@ -50,6 +52,7 @@
 			.sort((a, b) => rank(a.c) - rank(b.c) || a.n.localeCompare(b.n))
 	);
 	const is_filtering = $derived(qy !== '' || live_only || earning_only || raising_only);
+	const ranked = $derived([...filtered].sort(by_momentum));
 </script>
 
 <svelte:head>
@@ -169,7 +172,30 @@
 	</section>
 
 	<section class="mx-auto max-w-5xl px-6 py-16">
-		<div class="flex flex-col gap-14">
+		<div class="mb-8 flex items-center gap-4 text-sm">
+			<button
+				type="button"
+				onclick={() => (by_sector = false)}
+				class={by_sector ? 'text-ink/50 hover:text-ink' : 'font-medium text-cobalt underline'}
+			>
+				by traction
+			</button>
+			<button
+				type="button"
+				onclick={() => (by_sector = true)}
+				class={by_sector ? 'font-medium text-cobalt underline' : 'text-ink/50 hover:text-ink'}
+			>
+				by sector
+			</button>
+		</div>
+		{#if !by_sector}
+			<div class="flex flex-col divide-y divide-ink/10 border-y border-ink/10">
+				{#each ranked as it (it.g)}
+					<DealCard p={it} />
+				{/each}
+			</div>
+		{/if}
+		<div class="flex flex-col gap-14" class:hidden={!by_sector}>
 			{#each groups as g (g.c)}
 				<div id="s-{g.c}">
 					<button
@@ -205,26 +231,16 @@
 							class="mt-5 flex flex-col divide-y divide-ink/10 border-y border-ink/10"
 						>
 							{#each g.items as it (it.g)}
-								<a
-									href="/{it.g}"
-									class="flex flex-col gap-2 py-4 transition-colors hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6"
-								>
-									<span class="font-display w-48 shrink-0 truncate font-medium text-ink">{it.n}</span>
-									<StatusPill r={it.r} />
-									<span class="flex-1 text-sm text-ink/70">{it.o}</span>
-									{#if it.k || it.q}
-										<span class="shrink-0 text-xs text-ink/60">{it.k || `${fmt_num(it.q)} users`}</span>
-									{/if}
-								</a>
+								<DealCard p={it} />
 							{/each}
 						</div>
 					{/if}
 				</div>
 			{/each}
-			{#if is_filtering && !groups.length}
-				<p class="text-center text-ink/60">no products match your search.</p>
-			{/if}
 		</div>
+		{#if is_filtering && !filtered.length}
+			<p class="mt-10 text-center text-ink/60">no products match your search.</p>
+		{/if}
 	</section>
 {/if}
 
