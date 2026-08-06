@@ -58,7 +58,7 @@
 	},
 	"forms": {
 		"s": "let builders supply the fields the investor surface needs",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check",
 		"c": {
 			"edit_investor_fields": {
@@ -75,7 +75,7 @@
 			},
 			"submit_investor_fields": {
 				"s": "Mirror the same investor fieldset onto the new-product form so nothing submitted from today onward is missing it.\n\nFILE: src/routes/submit/+page.svelte\n\nThe metrics fieldset ends with:\n\n\t\t\t<label class=\"flex flex-col gap-1 text-sm text-ink/70\">\n\t\t\t\tproudest metric\n\t\t\t\t<input name=\"k\" value={val('k')} class=\"rounded-md border border-ink/20 px-3 py-2\" />\n\t\t\t</label>\n\t\t</div>\n\nInsert the same fieldset as the edit page between that `</div>` and the submit `<button`, with two differences: every `value={p.X}` becomes `value={val('X')}`, and the heading paragraph reads `one real number is worth more here than three paragraphs — you can add it later if you don't have it yet.`\n\nIn the script block add:\n\n\timport { stage_label } from '$lib/investor';\n\timport { ctrl_enter } from '$lib/ctrl_enter';\n\n\tlet raising = $state('');\n\tlet submit_form: HTMLFormElement;\n\nand change the form tag from:\n\n\t<form method=\"POST\" use:enhance class=\"mt-10 flex flex-col gap-8\">\n\nto:\n\n\t<form\n\t\tmethod=\"POST\"\n\t\tuse:enhance\n\t\tuse:ctrl_enter={() => submit_form.requestSubmit()}\n\t\tbind:this={submit_form}\n\t\tclass=\"mt-10 flex flex-col gap-8\"\n\t>\n\nFILE: src/routes/submit/+page.server.ts\n\nFind:\n\n\t\tconst metrics = { d: v('d'), q: v('q'), m: v('m'), a: v('a'), z: v('z'), k: v('k') };\n\nand add beneath it the identical `investor` object from the edit action. Then extend both branches of the payload ternary: the `existing` branch becomes\n\n\t\t\t? { ...ep, u, l, c, cn, b, ...metrics, ...investor }\n\nand in the new-product branch add `...investor,` on its own line directly after `...metrics,`.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '<input name=\"k\" value={val(' src/routes/submit/+page.svelte",
 				"t": "bash plan/verify_tests.sh && grep -qF 'name=\"hm\"' src/routes/submit/+page.svelte && grep -qF 'name=\"sg\"' src/routes/submit/+page.svelte && grep -qF 'use:ctrl_enter' src/routes/submit/+page.svelte && grep -qF \"hm: v('hm')\" src/routes/submit/+page.server.ts && grep -qF '...investor' src/routes/submit/+page.server.ts && pnpm test && pnpm check"
 			}

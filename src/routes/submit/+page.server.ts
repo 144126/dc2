@@ -47,9 +47,18 @@ export const actions: Actions = {
 		const cn = chosen?.n ?? sectors.find((s) => s.g === 'y')?.n ?? 'early & in preview';
 		const b = { n: v('y'), e: fd.get('pe') ? locals.user.e : '', p: '', l: '', c: v('v') };
 		const metrics = { d: v('d'), q: v('q'), m: v('m'), a: v('a'), z: v('z'), k: v('k') };
+		const investor = {
+			hm: v('hm'),
+			hl: v('hl'),
+			sg: v('sg'),
+			ra: v('ra'),
+			rt: v('ra') === 'y' ? v('rt') : '',
+			fp: v('fp'),
+			hj: String(Math.floor(Date.now() / 1000))
+		};
 
 		const payload = existing
-			? { ...ep, u, l, c, cn, b, ...metrics }
+			? { ...ep, u, l, c, cn, b, ...metrics, ...investor }
 			: {
 					s: 'adca',
 					t: 'p',
@@ -67,6 +76,7 @@ export const actions: Actions = {
 					x: v('x'),
 					b,
 					...metrics,
+					...investor,
 					j: Math.floor(Date.now() / 1000)
 				};
 
