@@ -83,7 +83,7 @@
 	},
 	"freshness": {
 		"s": "make confirming a number cost one click, and steer builders toward numbers that never expire",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"confirm_action": {
@@ -94,7 +94,7 @@
 			},
 			"milestone_copy": {
 				"s": "Steer builders toward the one kind of number that never goes stale.\n\n`₦1m a month` is true for about a month. `first ₦1m month: august 2026` is true forever, and tells an investor the same thing plus when it happened. A dated milestone is strictly better than a running total for a directory that cannot update itself daily, and the only thing standing between the two is the hint text under the field.\n\nFILE: src/routes/[slug]/edit/+page.svelte AND src/routes/submit/+page.svelte\n\nIn both files, the investor fieldset's `what that number is` label currently ends with its `<input name=\"hl\" ... />`. Add a hint span immediately after that input, inside the same label, in both files:\n\n\t\t\t\t<span class=\"text-xs text-ink/50\">\n\t\t\t\t\tmilestones age better than totals. \"first ₦1m month, august 2026\" stays true; \"₦1m a month\"\n\t\t\t\t\tstops being true the month it changes.\n\t\t\t\t</span>\n\nAnd in both files, under the headline-number input, change the existing placeholder from `2,400` to `2,400 · or: first 1,000 paying users`.\n\nAlso add, directly under the `for investors` heading paragraph in both files:\n\n\t\t\t<p class=\"text-sm text-ink/60\">\n\t\t\t\twhatever you put here is stamped with today's date and shown with it. it keeps full weight for\n\t\t\t\tthree months, half for three more, then stops counting until you confirm it.\n\t\t\t</p>\n\nTelling builders the rule up front is what makes the rule work. A decay nobody was told about reads as the site being broken; a decay everybody was told about reads as the site being honest, and gives them a reason to come back.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF 'name=\"hl\"' src/routes/[slug]/edit/+page.svelte",
 				"t": "bash plan/verify_tests.sh && grep -qF 'milestones age better than totals' src/routes/[slug]/edit/+page.svelte && grep -qF 'milestones age better than totals' src/routes/submit/+page.svelte && grep -qF 'first 1,000 paying users' src/routes/[slug]/edit/+page.svelte && grep -qF 'half for three more' src/routes/[slug]/edit/+page.svelte && pnpm test && pnpm check && pnpm build"
 			}

@@ -167,13 +167,21 @@
 				one real number is worth more here than three paragraphs — you can add it later if you
 				don't have it yet.
 			</p>
+			<p class="text-sm text-ink/60">
+				whatever you put here is stamped with today's date and shown with it. it keeps full weight for
+				three months, half for three more, then stops counting until you confirm it.
+			</p>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				headline number
-				<input name="hm" value={val('hm')} placeholder="2,400" class="rounded-md border border-ink/20 px-3 py-2" />
+				<input name="hm" value={val('hm')} placeholder="2,400 · or: first 1,000 paying users" class="rounded-md border border-ink/20 px-3 py-2" />
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				what that number is
 				<input name="hl" value={val('hl')} placeholder="paying customers" class="rounded-md border border-ink/20 px-3 py-2" />
+				<span class="text-xs text-ink/50">
+					milestones age better than totals. "first ₦1m month, august 2026" stays true; "₦1m a month"
+					stops being true the month it changes.
+				</span>
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				stage
