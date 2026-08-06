@@ -177,7 +177,7 @@
 	},
 	"seo": {
 		"s": "make every page findable and worth sharing",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"structured_data": {
@@ -194,7 +194,7 @@
 			},
 			"raising_page": {
 				"s": "Create /raising — a page listing only the companies that say they are raising. It is the link to send an investor, and it is the page most likely to earn a search result for a query nobody else in this market has written a page for.\n\nCreate src/routes/raising/+page.server.ts with exactly:\n\nimport type { PageServerLoad } from './$types';\nimport { env } from '$env/dynamic/private';\nimport { scroll, eq, f } from '$lib/server/qdrant';\n\nexport const load: PageServerLoad = async () => {\n\ttry {\n\t\tconst pts = await scroll(env, f(eq('s', 'adca'), eq('t', 'p'), eq('ra', 'y')));\n\t\tconst p = pts.map((pt) => {\n\t\t\tconst x = pt.payload as Record<string, string>;\n\t\t\tdelete x.e;\n\t\t\treturn x;\n\t\t});\n\t\treturn { p };\n\t} catch {\n\t\treturn { p: [] as Record<string, string>[] };\n\t}\n};\n\nCreate src/routes/raising/+page.svelte with exactly:\n\n<script lang=\"ts\">\n\timport type { PageData } from './$types';\n\timport { by_momentum, is_fresh } from '$lib/investor';\n\timport DealCard from '$lib/deal_card.svelte';\n\n\tlet { data }: { data: PageData } = $props();\n\tconst ranked = $derived([...data.p].filter(is_fresh).sort(by_momentum));\n</script>\n\n<svelte:head>\n\t<title>nigerian startups raising right now — devcircles</title>\n\t<meta\n\t\tname=\"description\"\n\t\tcontent=\"companies built by the devcircles community that are raising capital right now, with what each one has actually shipped and the numbers they report.\"\n\t/>\n\t<link rel=\"canonical\" href=\"https://devcircles.apexlinks.org/raising\" />\n</svelte:head>\n\n<div class=\"mx-auto max-w-5xl px-6 py-16\">\n\t<h1 class=\"font-display text-4xl font-semibold tracking-tight text-ink\">raising right now</h1>\n\t<p class=\"mt-4 max-w-2xl text-ink/70\">\n\t\t{ranked.length} companies in the devcircles community are raising. every link here has been\n\t\tchecked by hand; every figure is labelled verified or self-reported.\n\t</p>\n\t{#if ranked.length}\n\t\t<div class=\"mt-10 flex flex-col divide-y divide-ink/10 border-y border-ink/10\">\n\t\t\t{#each ranked as p (p.g)}\n\t\t\t\t<DealCard {p} />\n\t\t\t{/each}\n\t\t</div>\n\t{:else}\n\t\t<p class=\"mt-10 text-ink/60\">nobody has marked themselves as raising yet.</p>\n\t{/if}\n\t<a href=\"/\" class=\"mt-10 inline-block text-sm text-cobalt hover:underline\">← all companies</a>\n</div>\n\nThen add a link to it in the header nav. FILE: src/routes/+layout.svelte — inside the nav's right-hand div, immediately before the existing `<a href=\"/submit\"`, add:\n\n\t\t\t\t<a href=\"/raising\" class=\"text-cobalt hover:underline\">raising</a>",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '<a href=\"/submit\" class=\"text-cobalt hover:underline\">submit</a>' src/routes/+layout.svelte",
 				"t": "bash plan/verify_tests.sh && test -f src/routes/raising/+page.svelte && test -f src/routes/raising/+page.server.ts && grep -qF 'delete x.e' src/routes/raising/+page.server.ts && grep -qF '/raising' src/routes/+layout.svelte && pnpm test && pnpm check && pnpm build"
 			}

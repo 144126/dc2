@@ -21,6 +21,7 @@
 				devcircles
 			</a>
 			<div class="flex items-center gap-4 text-sm">
+				<a href="/raising" class="text-cobalt hover:underline">raising</a>
 				<a href="/submit" class="text-cobalt hover:underline">submit</a>
 				{#if data.u}
 					<span class="max-sm:hidden text-ink/60">{data.u.e}</span>
