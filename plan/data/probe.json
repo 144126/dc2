@@ -1,0 +1,436 @@
+{
+ "checked": "2026-08-06",
+ "results": [
+  {
+   "g": "helpa",
+   "u": "https://helpaservices.com",
+   "ok": true,
+   "status": 200,
+   "title": "Helpa — Nigeria's Trusted Service Marketplace",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "stacklevest",
+   "u": "https://www.stacklevest.com",
+   "ok": false,
+   "status": 402,
+   "title": "",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "wakatix",
+   "u": "https://wakatix.com",
+   "ok": true,
+   "status": 200,
+   "title": "WakaTix - Your Ticket to Every Vibe",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "opennaijr",
+   "u": "https://laws2020.github.io/opennaijR/",
+   "ok": true,
+   "status": 200,
+   "title": "opennaijR • opennaijR",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "edupeak",
+   "u": "https://edupeak.com.ng",
+   "ok": true,
+   "status": 200,
+   "title": "EDUPEAK | Official University Admission & Cutoff Placement Analytics",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "sparkles",
+   "u": "https://www.sparkles.com.ng",
+   "ok": true,
+   "status": 200,
+   "title": "Sparkles - System for Modern Laundry Businesses",
+   "pricing": true,
+   "signup": true,
+   "app": "https://play.google.com/store/apps/details?id=com.laundryapp.laudry_mobile"
+  },
+  {
+   "g": "kashlog",
+   "u": "https://kashlog.com",
+   "ok": true,
+   "status": 200,
+   "title": "Kashlog — Simple, Secure Accounting for Individuals and Businesses",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "scratch",
+   "u": "https://scratch.chidiorji.com",
+   "ok": true,
+   "status": 200,
+   "title": "Scratch - Your Cross-Platform Scratchpad",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "repoview",
+   "u": "https://gitrepoview.com",
+   "ok": true,
+   "status": 200,
+   "title": "RepoView – GitHub Commits to Content",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "formonger",
+   "u": "https://formonger.com",
+   "ok": true,
+   "status": 200,
+   "title": "Formonger - API-first form submission for developers",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "downloadchow",
+   "u": "https://www.downloadchow.com",
+   "ok": true,
+   "status": 200,
+   "title": "DownloadChow",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "mip-network",
+   "u": "https://mipnetwork.preview.haqqman.com",
+   "ok": true,
+   "status": 200,
+   "title": "Login – Vercel",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "aso-akwa-riga",
+   "u": "https://www.aso-akwa-riga.com",
+   "ok": true,
+   "status": 200,
+   "title": "Aso-Akwa-Riga - Professional Tailoring Management",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "loamy",
+   "u": "https://loamy.braventiholdings.com.ng",
+   "ok": true,
+   "status": 200,
+   "title": "Loamy — Founding Member Portal",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "cashwyre",
+   "u": "https://cashwyre.com",
+   "ok": true,
+   "status": 200,
+   "title": "Cashwyre | Spend crypto instantly across Africa",
+   "pricing": false,
+   "signup": true,
+   "app": "https://apps.apple.com/tr/app/cashwyre/id6450153762?l=tr"
+  },
+  {
+   "g": "settlla",
+   "u": "https://settlla.com",
+   "ok": false,
+   "status": 402,
+   "title": "",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "pulsepm",
+   "u": "https://pulsepm.ai",
+   "ok": true,
+   "status": 200,
+   "title": "PulsePM | Your AI-Native Product Manager",
+   "pricing": true,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "medicsniche",
+   "u": "https://medicsniche.com",
+   "ok": true,
+   "status": 200,
+   "title": "MedicsNiche",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "reemsun",
+   "u": "https://reemsun.com",
+   "ok": true,
+   "status": 200,
+   "title": "Shop - REEMSUN",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "devspax",
+   "u": "https://devspax.com",
+   "ok": true,
+   "status": 200,
+   "title": "DevSpax | Real-World Coding Challenges for Developers",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "opulentia-web-studio",
+   "u": "https://opulentia.studio",
+   "ok": true,
+   "status": 200,
+   "title": "Opulentia Web Studio | High-Converting Web Design Agency",
+   "pricing": true,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "nairaverse",
+   "u": "https://nairaverse.vercel.app",
+   "ok": true,
+   "status": 200,
+   "title": "NairaVerse | Home",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "onyeakuko",
+   "u": "https://onyeakuko.online",
+   "ok": true,
+   "status": 200,
+   "title": "OnyeAkụkọ | Breaking News, Nigerian News &amp; Global Updates",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "kraemod",
+   "u": "https://kraemod.vercel.app",
+   "ok": true,
+   "status": 200,
+   "title": "Seamlessly design and print your product - Kraemod",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "chaise",
+   "u": "https://chaise.app/home",
+   "ok": true,
+   "status": 200,
+   "title": "Chaise - Empowering Africa&#x27;s Top Freelancers and Verified Talents",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "last-minutes",
+   "u": "https://last-minutes.vercel.app",
+   "ok": true,
+   "status": 200,
+   "title": "Last Minutes — The Intelligent Voice Platform",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "stuqet",
+   "u": "https://stuqet.com",
+   "ok": true,
+   "status": 200,
+   "title": "Stuqet | Best neighbor shopping Platform",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "andiova",
+   "u": "https://www.andiova.com",
+   "ok": false,
+   "status": 0,
+   "title": "",
+   "pricing": false,
+   "signup": false,
+   "app": "",
+   "error": "fetch failed"
+  },
+  {
+   "g": "hedwig",
+   "u": "https://hedwigbot.xyz",
+   "ok": false,
+   "status": 404,
+   "title": "",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "dons-digital-academy",
+   "u": "https://www.donsdigitalacademy.com",
+   "ok": true,
+   "status": 200,
+   "title": "Dons Digital Academy — Digital Skills for Africa",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "yeittu",
+   "u": "https://yeittu.com",
+   "ok": true,
+   "status": 200,
+   "title": "Yeittu — Your Voice. Your World. Everywhere.",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "ongist",
+   "u": "https://ongist.com",
+   "ok": true,
+   "status": 200,
+   "title": "onGist - The Community Q&amp;A Platform",
+   "pricing": false,
+   "signup": true,
+   "app": "https://play.google.com/store/apps/details?id=com.striderk.ongist_app"
+  },
+  {
+   "g": "techtree",
+   "u": "https://techtree-nine.vercel.app/u/samuelibits",
+   "ok": true,
+   "status": 200,
+   "title": "TechTree — Where Nigeria Builds",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "ogasa",
+   "u": "https://play.google.com/store/apps/details?id=com.ogasaairtime",
+   "ok": true,
+   "status": 200,
+   "title": "Ogasa - Apps on Google Play",
+   "pricing": false,
+   "signup": true,
+   "app": "https://play.google.com/store/ereview\\"
+  },
+  {
+   "g": "findash",
+   "u": "https://findashmvp.netlify.app",
+   "ok": true,
+   "status": 200,
+   "title": "findash",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "ummahsquare",
+   "u": "https://ummahsquare.online",
+   "ok": true,
+   "status": 200,
+   "title": "ummahsquare",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "truewest-technologies",
+   "u": "https://truewesttechnologies.com",
+   "ok": true,
+   "status": 200,
+   "title": "Truewest Technologies | Modern Digital Solutions",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "king-king-synergy",
+   "u": "https://www.kingkingsynergy.com",
+   "ok": true,
+   "status": 200,
+   "title": "King + King Synergy LTD | Maritime Services &amp; Energy Solutions",
+   "pricing": false,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "peeng",
+   "u": "https://peeng.dev",
+   "ok": true,
+   "status": 200,
+   "title": "Peeng - AI-powered observability",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  },
+  {
+   "g": "bluelines",
+   "u": "https://app.bluelines.io",
+   "ok": true,
+   "status": 200,
+   "title": "BlueLines",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "campuspadi",
+   "u": "https://campuspadi.com",
+   "ok": true,
+   "status": 200,
+   "title": "CampusPadi | Campus life, Simplified",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "signout",
+   "u": "https://signout-up8o.onrender.com",
+   "ok": false,
+   "status": 404,
+   "title": "",
+   "pricing": false,
+   "signup": false,
+   "app": ""
+  },
+  {
+   "g": "debuspay",
+   "u": "https://debus.com.ng",
+   "ok": true,
+   "status": 200,
+   "title": "Debuspay – Seamless Fintech Platform for Bill Payments, Virtual Cards & Wallet Services",
+   "pricing": true,
+   "signup": true,
+   "app": ""
+  }
+ ]
+}
