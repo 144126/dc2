@@ -77,6 +77,12 @@ export const actions: Actions = {
 		throw redirect(303, '/' + params.slug + '?saved=1');
 	},
 
+	confirm: async ({ params, locals }) => {
+		const { id, ep } = await load_owned(params, locals);
+		await upsert(env, [{ id, payload: { ...ep, hj: String(Math.floor(Date.now() / 1000)) } }]);
+		throw redirect(303, '/' + params.slug + '?confirmed=1');
+	},
+
 	del: async ({ request, params, locals }) => {
 		const { id } = await load_owned(params, locals);
 		const fd = await request.formData();

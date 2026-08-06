@@ -1,7 +1,9 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import { page } from '$app/state';
+	import { enhance } from '$app/forms';
 	import { sector_info } from '$lib/sectors';
+	import { age_days } from '$lib/investor';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -11,6 +13,8 @@
 	const is_owner = $derived(!!data.u && data.u.e === p.e);
 
 	let show_preview = $state(false);
+
+	const stamp_age = $derived(age_days(p.hj));
 
 	const revenue_line = $derived(
 		p.m === 'y' ? (p.a ? `yes, ₦${fmt_num(p.a)} / month` : 'yes') : p.m === 'n' ? 'no' : ''
@@ -56,6 +60,8 @@
 		</div>
 	{:else if page.url.searchParams.has('saved')}
 		<div class="mt-6 rounded-lg bg-teal-brand/10 p-4 text-sm text-ink">changes saved.</div>
+	{:else if page.url.searchParams.has('confirmed')}
+		<div class="mt-6 rounded-lg bg-teal-brand/10 p-4 text-sm text-ink">confirmed — dated today.</div>
 	{/if}
 
 	<div class="mt-6 flex flex-wrap items-center gap-3">
@@ -65,6 +71,22 @@
 			<a href="/{p.g}/edit" class="ml-auto text-sm text-cobalt hover:underline">edit your page</a>
 		{/if}
 	</div>
+
+	{#if is_owner && (stamp_age === null || stamp_age > 60)}
+		<div class="mt-4 flex flex-wrap items-center gap-4 rounded-lg bg-ochre/10 p-4 text-sm">
+			<span class="text-ink/75">
+				{stamp_age === null
+					? 'your figures have never been dated, so investors see them as unconfirmed.'
+					: `your figures were last confirmed ${stamp_age} days ago and are sinking down the homepage.`}
+			</span>
+			<form method="POST" action="/{p.g}/edit?/confirm" use:enhance>
+				<button type="submit" class="rounded-full bg-cobalt px-4 py-2 text-xs font-medium text-white hover:bg-cobalt/90">
+					still accurate
+				</button>
+			</form>
+			<a href="/{p.g}/edit" class="text-cobalt hover:underline">or update them</a>
+		</div>
+	{/if}
 
 	<h1 class="mt-3 font-display text-4xl font-semibold tracking-tight text-ink">{p.n}</h1>
 
