@@ -13,6 +13,8 @@
 
 	let qy = $state('');
 	let live_only = $state(false);
+	let earning_only = $state(false);
+	let raising_only = $state(false);
 
 	const status_rank: Record<string, number> = { l: 0, p: 1, u: 2 };
 
@@ -25,6 +27,8 @@
 		data.p.filter(
 			(x) =>
 				(!live_only || x.r === 'l') &&
+				(!earning_only || x.m === 'y') &&
+				(!raising_only || x.ra === 'y') &&
 				(x.n + ' ' + x.o).toLowerCase().includes(qy.toLowerCase())
 		)
 	);
@@ -45,7 +49,7 @@
 			})
 			.sort((a, b) => rank(a.c) - rank(b.c) || a.n.localeCompare(b.n))
 	);
-	const is_filtering = $derived(qy !== '' || live_only);
+	const is_filtering = $derived(qy !== '' || live_only || earning_only || raising_only);
 </script>
 
 <svelte:head>
@@ -131,6 +135,24 @@
 				placeholder="search products…"
 				class="w-full max-w-xs rounded-full border border-ink/20 px-4 py-2 text-sm"
 			/>
+			<button
+				type="button"
+				onclick={() => (raising_only = !raising_only)}
+				class="rounded-full border px-3 py-1.5 text-xs font-medium uppercase tracking-wide {raising_only
+					? 'border-cobalt bg-cobalt text-white'
+					: 'border-ink/20 text-ink/60'}"
+			>
+				raising now
+			</button>
+			<button
+				type="button"
+				onclick={() => (earning_only = !earning_only)}
+				class="rounded-full border px-3 py-1.5 text-xs font-medium uppercase tracking-wide {earning_only
+					? 'border-cobalt bg-cobalt text-white'
+					: 'border-ink/20 text-ink/60'}"
+			>
+				making revenue
+			</button>
 			<button
 				type="button"
 				onclick={() => (live_only = !live_only)}
