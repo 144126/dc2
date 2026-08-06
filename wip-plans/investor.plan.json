@@ -202,11 +202,11 @@
 	},
 	"ship": {
 		"s": "prove it on the live site",
-		"d": 0,
+		"d": 1,
 		"c": {
 			"live_check": {
 				"s": "Push and verify against production. Cloudflare Workers Builds deploys automatically on push to master; give it 90 seconds before checking.\n\nRun, in order:\n\ngit add . && git commit -m \"investor surface\" && git push\n\nThen wait 90 seconds and check the live site. Every one of these must pass:\n\n1. The homepage renders the traction view and both toggles.\n2. The homepage exposes no email address anywhere — this is the leak that was fixed before this plan started and the check exists so it never comes back.\n3. /raising responds 200.\n4. /robots.txt names the sitemap.\n5. A product page carries JSON-LD.\n\nIf any check fails, that is this step's problem — fix it here, do not mark and move on. If the failure is that the deploy has not landed yet, wait and check again rather than blocking.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/lib/deal_card.svelte",
 				"t": "curl -s --max-time 25 https://devcircles.apexlinks.org/ | grep -q 'by traction' && ! curl -s --max-time 25 https://devcircles.apexlinks.org/ | grep -qE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[a-z]{2,}' && [ \"$(curl -s -o /dev/null -w '%{http_code}' --max-time 25 https://devcircles.apexlinks.org/raising)\" = 200 ] && curl -s --max-time 25 https://devcircles.apexlinks.org/robots.txt | grep -q 'Sitemap:' && curl -s --max-time 25 https://devcircles.apexlinks.org/cashwyre | grep -q 'application/ld+json'"
 			}
