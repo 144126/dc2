@@ -6,6 +6,7 @@
 	import { headline, stage_label, raise_label, verify_label, is_fresh, as_of, age_days } from '$lib/investor';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
+	import Interest from '$lib/interest.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const p = $derived(data.p as Record<string, string> & { b?: Record<string, string> });
@@ -210,6 +211,8 @@
 			</dl>
 		</div>
 	{/if}
+
+	<Interest pg={p.g} direct={b.e ?? ''} />
 
 	{#if p.u}
 		<div class="mt-14">
