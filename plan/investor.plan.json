@@ -188,7 +188,7 @@
 			},
 			"robots_and_sitemap": {
 				"s": "Confirm the sitemap covers every product and add a robots.txt pointing at it.\n\nFILE: src/routes/sitemap.xml/+server.ts already exists — read it. If it lists products from Qdrant with no limit argument or a limit of at least 500, leave it exactly as it is. If it hardcodes a smaller limit, raise it to 500.\n\nCreate src/routes/robots.txt/+server.ts with exactly:\n\nimport type { RequestHandler } from './$types';\n\nexport const GET: RequestHandler = async () =>\n\tnew Response(\n\t\t`User-agent: *\\nAllow: /\\nDisallow: /submit\\nDisallow: /api/\\nSitemap: https://devcircles.apexlinks.org/sitemap.xml\\n`,\n\t\t{ headers: { 'content-type': 'text/plain' } }\n\t);\n\n`/submit` and `/api/` are excluded because neither has any search value and the submit page requires a login.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f src/routes/sitemap.xml/+server.ts",
 				"t": "bash plan/verify_tests.sh && test -f src/routes/robots.txt/+server.ts && grep -qF 'Sitemap: https://devcircles.apexlinks.org/sitemap.xml' src/routes/robots.txt/+server.ts && pnpm test && pnpm check && pnpm build"
 			},
