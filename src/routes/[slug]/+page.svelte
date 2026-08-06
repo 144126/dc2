@@ -3,7 +3,7 @@
 	import { page } from '$app/state';
 	import { enhance } from '$app/forms';
 	import { sector_info } from '$lib/sectors';
-	import { age_days } from '$lib/investor';
+	import { headline, stage_label, raise_label, verify_label, is_fresh, as_of, age_days } from '$lib/investor';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -15,6 +15,8 @@
 	let show_preview = $state(false);
 
 	const stamp_age = $derived(age_days(p.hj));
+	const hd = $derived(headline(p));
+	const current = $derived(is_fresh(p));
 
 	const revenue_line = $derived(
 		p.m === 'y' ? (p.a ? `yes, ₦${fmt_num(p.a)} / month` : 'yes') : p.m === 'n' ? 'no' : ''
@@ -97,6 +99,34 @@
 	{/if}
 
 	<p class="mt-8 max-w-3xl text-2xl leading-snug font-medium text-ink">{p.o}</p>
+
+	{#if hd || p.sg || (p.ra === 'y' && current)}
+		<div class="mt-10 flex flex-wrap items-end gap-x-12 gap-y-6">
+			{#if hd}
+				<div>
+					<div class="font-display text-5xl font-semibold {current ? 'text-ink' : 'text-ink/40'}">
+						{fmt_num(hd.v)}
+					</div>
+					<div class="mt-1 text-sm text-ink/60">{current ? hd.l : 'last reported ' + hd.l}</div>
+					<div class="text-xs tracking-wide text-ink/40 uppercase">
+						{verify_label[hd.hv]} · {as_of(hd.hj)}
+					</div>
+				</div>
+			{/if}
+			{#if p.sg && stage_label[p.sg]}
+				<div>
+					<div class="font-display text-xl font-medium text-ink">{stage_label[p.sg]}</div>
+					<div class="mt-1 text-sm text-ink/60">stage</div>
+				</div>
+			{/if}
+			{#if p.ra === 'y' && current}
+				<div>
+					<div class="font-display text-xl font-medium text-coral">{p.rt || raise_label.y}</div>
+					<div class="mt-1 text-sm text-ink/60">raising</div>
+				</div>
+			{/if}
+		</div>
+	{/if}
 
 	{#if has_analysis}
 		<div class="mt-12 grid gap-10 sm:grid-cols-3">
