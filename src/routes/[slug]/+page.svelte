@@ -172,9 +172,26 @@
 		{/if}
 	</div>
 
+	{#if p.ev || p.vd}
+		<div class="mt-8 rounded-lg border border-ink/10 p-6">
+			<h2 class="font-display text-lg font-medium text-ink">what devcircles checked</h2>
+			{#if p.ev}<p class="mt-2 text-ink/75">{p.ev}</p>{/if}
+			{#if p.vd}<p class="mt-2 text-xs text-ink/50">link last checked {p.vd}</p>{/if}
+			<p class="mt-4 text-xs text-ink/60">
+				devcircles checks that a link works and what the product publicly offers. figures above come
+				from the builder unless marked verified.
+			</p>
+		</div>
+	{/if}
+
 	{#if contacts.length}
 		<div class="mt-8 rounded-lg border border-ink/10 p-6">
-			<h2 class="font-display text-lg font-medium text-ink">builder</h2>
+			<div class="flex items-center gap-4">
+				{#if p.fp}
+					<img src={p.fp} alt="" loading="lazy" class="h-14 w-14 rounded-full object-cover" />
+				{/if}
+				<h2 class="font-display text-lg font-medium text-ink">builder</h2>
+			</div>
 			<dl class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
 				{#each contacts as c (c.k)}
 					<div>

@@ -133,7 +133,7 @@
 	},
 	"product": {
 		"s": "turn each product page into a one-screen deal card",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"product_headline": {
@@ -144,7 +144,7 @@
 			},
 			"product_evidence": {
 				"s": "Show what was actually checked. This is the credibility moat: anyone can write a description, almost nobody publishes what they verified and when.\n\nFILE: src/routes/[slug]/+page.svelte\n\nThe metrics card ends with this closing tag sequence:\n\n\t\t{:else}\n\t\t\t<p class=\"mt-2 text-ink/60\">no metrics shared yet.</p>\n\t\t{/if}\n\t</div>\n\nInsert immediately after that closing `</div>`:\n\n\t{#if p.ev || p.vd}\n\t\t<div class=\"mt-8 rounded-lg border border-ink/10 p-6\">\n\t\t\t<h2 class=\"font-display text-lg font-medium text-ink\">what devcircles checked</h2>\n\t\t\t{#if p.ev}<p class=\"mt-2 text-ink/75\">{p.ev}</p>{/if}\n\t\t\t{#if p.vd}<p class=\"mt-2 text-xs text-ink/50\">link last checked {p.vd}</p>{/if}\n\t\t\t<p class=\"mt-4 text-xs text-ink/60\">\n\t\t\t\tdevcircles checks that a link works and what the product publicly offers. figures above come\n\t\t\t\tfrom the builder unless marked verified.\n\t\t\t</p>\n\t\t</div>\n\t{/if}\n\nAlso change the founder block so the face shows. The `builder` card currently opens with:\n\n\t\t\t<h2 class=\"font-display text-lg font-medium text-ink\">builder</h2>\n\nReplace that single line with:\n\n\t\t\t<div class=\"flex items-center gap-4\">\n\t\t\t\t{#if p.fp}\n\t\t\t\t\t<img src={p.fp} alt=\"\" loading=\"lazy\" class=\"h-14 w-14 rounded-full object-cover\" />\n\t\t\t\t{/if}\n\t\t\t\t<h2 class=\"font-display text-lg font-medium text-ink\">builder</h2>\n\t\t\t</div>",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF '<p class=\"mt-2 text-ink/60\">no metrics shared yet.</p>' src/routes/[slug]/+page.svelte",
 				"t": "bash plan/verify_tests.sh && grep -qF 'what devcircles checked' src/routes/[slug]/+page.svelte && grep -qF 'link last checked' src/routes/[slug]/+page.svelte && pnpm test && pnpm check && pnpm build"
 			}
