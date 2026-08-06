@@ -152,7 +152,7 @@
 	},
 	"ask": {
 		"s": "the one tap that turns interest into a conversation",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check && pnpm build",
 		"c": {
 			"interest_endpoint": {
@@ -169,7 +169,7 @@
 			},
 			"interest_inbox": {
 				"s": "Show a builder who asked about them. Without this the captured interest is invisible and the lead dies in the database.\n\nFILE: src/routes/[slug]/+page.server.ts\n\nCurrent load:\n\nexport const load: PageServerLoad = async ({ params }) => {\n\tconst pt = await retrieve_one(env, await uuid_from(params.slug));\n\tif (!pt || !pt.payload) throw error(404, 'not found');\n\tconst p = pt.payload as Record<string, unknown>;\n\tdelete p.e;\n\treturn { p };\n};\n\nReplace the whole function with:\n\nexport const load: PageServerLoad = async ({ params, locals }) => {\n\tconst pt = await retrieve_one(env, await uuid_from(params.slug));\n\tif (!pt || !pt.payload) throw error(404, 'not found');\n\tconst p = pt.payload as Record<string, unknown>;\n\tconst owner = !!locals.user && locals.user.e === p.e;\n\tdelete p.e;\n\tif (!owner) return { p, asks: [] };\n\tconst pts = await scroll(env, f(eq('s', 'adca'), eq('t', 'x'), eq('pg', params.slug)), 200);\n\tconst asks = pts\n\t\t.map((x) => x.payload as Record<string, string>)\n\t\t.sort((a, b) => Number(b.j ?? 0) - Number(a.j ?? 0));\n\treturn { p, asks };\n};\n\nand extend the import at the top of the file from:\n\nimport { retrieve_one, uuid_from } from '$lib/server/qdrant';\n\nto:\n\nimport { retrieve_one, uuid_from, scroll, eq, f } from '$lib/server/qdrant';\n\nThe ownership check happens BEFORE `delete p.e` and the delete still happens on every path — an investor must never receive the owner email, and the owner does not need it sent back to them.\n\nFILE: src/routes/[slug]/+page.svelte — add to the script block:\n\n\tconst asks = $derived((data.asks ?? []) as Record<string, string>[]);\n\nand insert, immediately after the `<Interest ... />` element:\n\n\t{#if is_owner && asks.length}\n\t\t<div class=\"mt-8 rounded-lg border border-teal-brand/30 p-6\">\n\t\t\t<h2 class=\"font-display text-lg font-medium text-ink\">\n\t\t\t\t{asks.length} {asks.length === 1 ? 'person has' : 'people have'} asked about this\n\t\t\t</h2>\n\t\t\t<ul class=\"mt-4 flex flex-col gap-4\">\n\t\t\t\t{#each asks as a (a.em + a.j)}\n\t\t\t\t\t<li class=\"text-sm\">\n\t\t\t\t\t\t<a href=\"mailto:{a.em}\" class=\"text-cobalt hover:underline\">{a.nm.toLowerCase()}</a>\n\t\t\t\t\t\t{#if a.fm}<span class=\"text-ink/60\"> · {a.fm.toLowerCase()}</span>{/if}\n\t\t\t\t\t\t{#if a.ms}<p class=\"mt-1 text-ink/75\">{a.ms}</p>{/if}\n\t\t\t\t\t</li>\n\t\t\t\t{/each}\n\t\t\t</ul>\n\t\t</div>\n\t{/if}",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF 'delete p.e;' src/routes/[slug]/+page.server.ts",
 				"t": "bash plan/verify_tests.sh && grep -qF \"eq('t', 'x')\" src/routes/[slug]/+page.server.ts && grep -qF 'delete p.e;' src/routes/[slug]/+page.server.ts && grep -qF 'asked about this' src/routes/[slug]/+page.svelte && pnpm test && pnpm check && pnpm build"
 			}

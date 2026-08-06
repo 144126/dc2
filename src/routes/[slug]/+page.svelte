@@ -16,6 +16,7 @@
 	let show_preview = $state(false);
 
 	const stamp_age = $derived(age_days(p.hj));
+	const asks = $derived((data.asks ?? []) as Record<string, string>[]);
 	const hd = $derived(headline(p));
 	const current = $derived(is_fresh(p));
 
@@ -213,6 +214,23 @@
 	{/if}
 
 	<Interest pg={p.g} direct={b.e ?? ''} />
+
+	{#if is_owner && asks.length}
+		<div class="mt-8 rounded-lg border border-teal-brand/30 p-6">
+			<h2 class="font-display text-lg font-medium text-ink">
+				{asks.length} {asks.length === 1 ? 'person has' : 'people have'} asked about this
+			</h2>
+			<ul class="mt-4 flex flex-col gap-4">
+				{#each asks as a (a.em + a.j)}
+					<li class="text-sm">
+						<a href="mailto:{a.em}" class="text-cobalt hover:underline">{a.nm.toLowerCase()}</a>
+						{#if a.fm}<span class="text-ink/60"> · {a.fm.toLowerCase()}</span>{/if}
+						{#if a.ms}<p class="mt-1 text-ink/75">{a.ms}</p>{/if}
+					</li>
+				{/each}
+			</ul>
+		</div>
+	{/if}
 
 	{#if p.u}
 		<div class="mt-14">
