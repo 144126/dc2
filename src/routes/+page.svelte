@@ -4,6 +4,7 @@
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { sector_color, sector_info, sector_order, status_legend } from '$lib/sectors';
+	import { is_fresh } from '$lib/investor';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -30,6 +31,8 @@
 
 	const total = $derived(data.p.length);
 	const live = $derived(data.p.filter((x) => x.r === 'l').length);
+	const earning = $derived(data.p.filter((x) => x.m === 'y' && is_fresh(x)).length);
+	const raising = $derived(data.p.filter((x) => x.ra === 'y' && is_fresh(x)).length);
 	const groups = $derived(
 		[...new Set(filtered.map((x) => x.c))]
 			.map((c) => {
@@ -79,8 +82,9 @@
 			</h1>
 		</div>
 		<p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink/70">
-			a guided tour of the products, platforms, and companies made by members of the devcircles
-			community. written in plain language, for investors and for everyone else.
+			{total} companies built by members of the devcircles community. every link checked by hand,
+			every figure labelled as verified or self-reported. sorted so the ones with the most traction
+			come first.
 		</p>
 	</div>
 </section>
@@ -94,19 +98,20 @@
 		<div class="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 py-8 sm:grid-cols-4">
 			<div>
 				<div class="font-display text-3xl font-semibold text-cobalt">{total}</div>
-				<div class="text-sm text-ink/60">products tracked</div>
+				<div class="text-sm text-ink/60">companies</div>
 			</div>
 			<div>
-				<div class="font-display text-3xl font-semibold text-cobalt">{live}</div>
-				<div class="text-sm text-ink/60">live today</div>
+				<div class="font-display text-3xl font-semibold text-cobalt">{earning}</div>
+				<div class="text-sm text-ink/60">already making revenue</div>
 			</div>
 			<div>
-				<div class="font-display text-3xl font-semibold text-cobalt">{groups.length}</div>
-				<div class="text-sm text-ink/60">sectors covered</div>
+				<div class="font-display text-3xl font-semibold text-cobalt">{raising}</div>
+				<div class="text-sm text-ink/60">raising right now</div>
 			</div>
 			<div class="col-span-2 self-end text-sm text-ink/60 sm:col-span-1">
-				{data.updated ? `updated ${fmt_date(new Date(data.updated * 1000).toISOString())} · ` : ''}figures
-				are self-reported by builders, not audited.
+				{data.updated
+					? `updated ${fmt_date(new Date(data.updated * 1000).toISOString())} · `
+					: ''}<span>figures are self-reported by builders, not audited.</span>
 			</div>
 		</div>
 	</section>
