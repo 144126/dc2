@@ -21,7 +21,7 @@
 	},
 	"data": {
 		"s": "get real, checkable facts onto the 43 products without inventing any",
-		"d": 0,
+		"d": 1,
 		"t": "bash plan/verify_tests.sh && pnpm test && pnpm check",
 		"c": {
 			"seed_preserves_new_fields": {
@@ -50,7 +50,7 @@
 			},
 			"headline_seed": {
 				"s": "Apply the planner-authored headline metrics.\n\nplan/data/headline.json holds every figure that has a defensible source today, and only those. It is deliberately short. Most of the 43 have no public number, and the correct behaviour is to leave them empty so the card says so — an empty slot is what makes builders fill the form in, and a fabricated one would destroy the credibility this whole surface is built on.\n\nCreate scripts/headline_apply.mjs with exactly this content:\n\nimport { readFileSync } from 'node:fs';\nimport { createHash } from 'node:crypto';\n\nconst env = {};\nfor (const l of readFileSync(new URL('../.env', import.meta.url), 'utf8').split('\\n'))\n\tif (l.includes('=')) env[l.slice(0, l.indexOf('=')).trim()] = l.slice(l.indexOf('=') + 1).trim();\n\nconst uuid_from = (s) => {\n\tconst h = createHash('sha256').update('adca:' + s).digest('hex');\n\treturn `${h.slice(0, 8)}-${h.slice(8, 12)}-4${h.slice(13, 16)}-8${h.slice(17, 20)}-${h.slice(20, 32)}`;\n};\n\nconst rows = JSON.parse(readFileSync(new URL('../plan/data/headline.json', import.meta.url), 'utf8'));\n\nfor (const row of rows) {\n\tconst { g, ...payload } = row;\n\tconst res = await fetch(env.QDRANT_URL + '/collections/i/points/payload?wait=true', {\n\t\tmethod: 'POST',\n\t\theaders: { 'content-type': 'application/json', 'api-key': env.QDRANT_KEY },\n\t\tbody: JSON.stringify({ payload, points: [uuid_from(g)] })\n\t});\n\tconsole.log(g, JSON.stringify(payload), res.status);\n}\n\nRun `node scripts/headline_apply.mjs`. Every line must end in 200. Do not add rows to plan/data/headline.json — if you believe a product deserves a number that is not in the file, `--block` this step and say which product and what source you found.",
-				"d": 0,
+				"d": 1,
 				"v": "test -f plan/data/headline.json",
 				"t": "bash plan/verify_tests.sh && test -f scripts/headline_apply.mjs && node scripts/headline_apply.mjs && node -e \"const fs=require('fs');const e={};for(const l of fs.readFileSync('.env','utf8').split('\\n'))if(l.includes('='))e[l.slice(0,l.indexOf('=')).trim()]=l.slice(l.indexOf('=')+1).trim();fetch(e.QDRANT_URL+'/collections/i/points/scroll',{method:'POST',headers:{'content-type':'application/json','api-key':e.QDRANT_KEY},body:JSON.stringify({filter:{must:[{key:'s',match:{value:'adca'}},{key:'t',match:{value:'p'}}]},limit:500,with_payload:true,with_vector:false})}).then(r=>r.json()).then(d=>{const n=d.result.points.filter(p=>p.payload.hm).length;if(n<1)throw new Error('no headline metrics landed');console.log('hm set on',n)})\" && pnpm test && pnpm check"
 			}
