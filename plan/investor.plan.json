@@ -26,7 +26,7 @@
 		"c": {
 			"seed_preserves_new_fields": {
 				"s": "scripts/seed.mjs re-upserts every product from seed.json and would blank the nine new keys on every run, exactly as it used to blank the owner email.\n\nIt already carries builder-owned fields forward. Find this block inside the `points` map:\n\n\t\t\td: was.d ?? '',\n\t\t\tq: was.q ?? '',\n\t\t\tm: was.m ?? '',\n\t\t\ta: was.a ?? '',\n\t\t\tz: was.z ?? '',\n\t\t\tk: was.k ?? '',\n\t\t\te: was.e ?? '',\n\nAdd the nine new keys immediately after the `e:` line, inside the same object:\n\n\t\t\thm: was.hm ?? '',\n\t\t\thl: was.hl ?? '',\n\t\t\thv: was.hv ?? '',\n\t\t\tsg: was.sg ?? '',\n\t\t\tra: was.ra ?? '',\n\t\t\trt: was.rt ?? '',\n\t\t\tfp: was.fp ?? '',\n\t\t\tev: was.ev ?? '',\n\t\t\tvd: was.vd ?? '',\n\t\t\thj: was.hj ?? '',\n\nThen run `node scripts/seed.mjs`. It must print a 200 and a `\"status\":\"completed\"` line. This is safe: the script scrolls the live points first and carries every listed field forward.",
-				"d": 0,
+				"d": 1,
 				"v": "grep -qF \"e: was.e ?? ''\" scripts/seed.mjs",
 				"t": "bash plan/verify_tests.sh && grep -qF \"hm: was.hm ?? ''\" scripts/seed.mjs && grep -qF \"vd: was.vd ?? ''\" scripts/seed.mjs && node scripts/seed.mjs | grep -q '\"status\":\"ok\"' && pnpm test && pnpm check"
 			},
