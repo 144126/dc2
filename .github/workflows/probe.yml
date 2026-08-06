@@ -1,0 +1,21 @@
+name: probe
+
+on:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: write env
+        run: |
+          echo "QDRANT_URL=${{ secrets.QDRANT_URL }}" > .env
+          echo "QDRANT_KEY=${{ secrets.QDRANT_KEY }}" >> .env
+      - run: node scripts/probe.mjs
+      - run: node scripts/probe_apply.mjs
