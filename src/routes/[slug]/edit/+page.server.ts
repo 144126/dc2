@@ -35,6 +35,15 @@ export const actions: Actions = {
 			c: v('v')
 		};
 		const metrics = { d: v('d'), q: v('q'), m: v('m'), a: v('a'), z: v('z'), k: v('k') };
+		const investor = {
+			hm: v('hm'),
+			hl: v('hl'),
+			sg: v('sg'),
+			ra: v('ra'),
+			rt: v('ra') === 'y' ? v('rt') : '',
+			fp: v('fp'),
+			hj: String(Math.floor(Date.now() / 1000))
+		};
 		const sectors = await list_sectors(env);
 		const chosen_sector = sectors.find((s) => s.g === v('c'));
 		const c = chosen_sector?.g ?? (ep.c as string);
@@ -60,7 +69,8 @@ export const actions: Actions = {
 			h: v('h'),
 			x: v('x'),
 			b,
-			...metrics
+			...metrics,
+			...investor
 		};
 
 		await upsert(env, [{ id, payload }]);
