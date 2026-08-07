@@ -36,6 +36,8 @@ sveltekit site listing products built by the devcircles community. collection `i
 | ev | evidence: what was checked, or a link to it |
 | vd | link last verified, ISO date string |
 | hj | epoch seconds when the builder last confirmed their figures |
+| co | country, iso 3166-1 alpha-2 lowercase (`ng`, `gh`, `ke`) |
+| st | state / region slug within that country (`fct`, `lagos`, `greater-accra`) |
 
 ## sector chars
 

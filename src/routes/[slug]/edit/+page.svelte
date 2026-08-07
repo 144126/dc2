@@ -5,12 +5,16 @@
 	import { sector_info } from '$lib/sectors';
 	import { stage_label } from '$lib/investor';
 	import { ctrl_enter } from '$lib/ctrl_enter';
+	import { country_label, state_label } from '$lib/places';
 	let { data }: { data: PageData } = $props();
 	const p = $derived(data.p as Record<string, string> & { b?: Record<string, string> });
 	const b = $derived(p.b ?? {});
 	let rev = $state(p.m ?? '');
 	let raising = $state(p.ra ?? '');
 	let save_form: HTMLFormElement;
+	let country = $state(data.p.co || 'ng');
+	const known_states = $derived(state_label[country]);
+	const countries = Object.entries(country_label).sort((a, b) => a[1].localeCompare(b[1]));
 </script>
 
 <svelte:head>
@@ -85,7 +89,29 @@
 				<input name="i" value={b.l} class="rounded-md border border-ink/20 px-3 py-2" />
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
-				location
+				country
+				<select name="co" bind:value={country} class="rounded-md border border-ink/20 px-3 py-2">
+					{#each countries as [code, name] (code)}
+						<option value={code}>{name}</option>
+					{/each}
+				</select>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				state
+				{#if known_states}
+					<select name="st" class="rounded-md border border-ink/20 px-3 py-2">
+						<option value="">select state</option>
+						{#each Object.entries(known_states) as [slug, name] (slug)}
+							<option value={slug} selected={p.st === slug}>{name}</option>
+						{/each}
+					</select>
+				{:else}
+					<input name="st" value={p.st} placeholder="region or state" class="rounded-md border border-ink/20 px-3 py-2" />
+				{/if}
+				<span class="text-xs text-ink/50">which devcircles community you build from.</span>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				city (optional)
 				<input name="v" value={b.c} class="rounded-md border border-ink/20 px-3 py-2" />
 			</label>
 		</div>

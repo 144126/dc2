@@ -4,6 +4,7 @@
 	import SectorPicker from '$lib/sector_picker.svelte';
 	import { stage_label } from '$lib/investor';
 	import { ctrl_enter } from '$lib/ctrl_enter';
+	import { country_label, state_label } from '$lib/places';
 	let { form, data }: { form: ActionData; data: PageData } = $props();
 	const err = (k: string) => (form as { errs?: Record<string, string> } | null)?.errs?.[k];
 	const val = (k: string) => (form as { values?: Record<string, string> } | null)?.values?.[k] ?? '';
@@ -12,13 +13,9 @@
 	let raising = $state('');
 	let submit_form: HTMLFormElement;
 
-	const states = [
-		'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue',
-		'Borno', 'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'Gombe',
-		'Imo', 'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara',
-		'Lagos', 'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau',
-		'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara', 'FCT (Abuja)'
-	];
+	let country = $state(val('co') || 'ng');
+	const known_states = $derived(state_label[country]);
+	const countries = Object.entries(country_label).sort((a, b) => a[1].localeCompare(b[1]));
 </script>
 
 <svelte:head>
@@ -52,13 +49,30 @@
 				show my email publicly on the product page
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
-				location
-				<select name="v" class="rounded-md border border-ink/20 px-3 py-2">
-					<option value="">select state</option>
-					{#each states as s}
-						<option value={s} selected={val('v') === s}>{s}</option>
+				country
+				<select name="co" bind:value={country} class="rounded-md border border-ink/20 px-3 py-2">
+					{#each countries as [code, name] (code)}
+						<option value={code}>{name}</option>
 					{/each}
 				</select>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				state
+				{#if known_states}
+					<select name="st" class="rounded-md border border-ink/20 px-3 py-2">
+						<option value="">select state</option>
+						{#each Object.entries(known_states) as [slug, name] (slug)}
+							<option value={slug} selected={val('st') === slug}>{name}</option>
+						{/each}
+					</select>
+				{:else}
+					<input name="st" value={val('st')} placeholder="region or state" class="rounded-md border border-ink/20 px-3 py-2" />
+				{/if}
+				<span class="text-xs text-ink/50">which devcircles community you build from.</span>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				city (optional)
+				<input name="v" value={val('v')} class="rounded-md border border-ink/20 px-3 py-2" />
 			</label>
 		</div>
 

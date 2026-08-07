@@ -3,27 +3,42 @@
 	import favicon from '$lib/assets/favicon.png';
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { page } from '$app/state';
 	import { sector_color, sector_info, sector_order, status_legend } from '$lib/sectors';
 	import { is_fresh, by_momentum } from '$lib/investor';
+	import { country_name, state_name, place_line } from '$lib/places';
 	import DealCard from '$lib/deal_card.svelte';
-	import { fmt_date, fmt_num } from '$lib/fmt';
+	import { fmt_date } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
+
+	type P = Record<string, string>;
 
 	let { data }: { data: PageData } = $props();
 	let open = $state<Record<string, boolean>>({});
-	let by_sector = $state(false);
+	let picked = $state('');
 
 	let qy = $state('');
 	let live_only = $state(false);
 	let earning_only = $state(false);
 	let raising_only = $state(false);
 
-	const status_rank: Record<string, number> = { l: 0, p: 1, u: 2 };
+	const views = [
+		['traction', 'by traction'],
+		['sector', 'by sector'],
+		['country', 'by country'],
+		['state', 'by state']
+	];
+	const view = $derived(picked || page.url.searchParams.get('v') || 'traction');
 
 	const rank = (c: string) => {
 		const i = (sector_order as readonly string[]).indexOf(c);
 		return i < 0 ? sector_order.length : i;
 	};
+
+	const dot = (k: string, i: number) =>
+		view === 'sector'
+			? (sector_color[k] ?? 'bg-white/60')
+			: ['bg-coral', 'bg-ochre', 'bg-teal-brand', 'bg-plum'][i % 4];
 
 	const filtered = $derived(
 		data.p.filter(
@@ -31,26 +46,42 @@
 				(!live_only || x.r === 'l') &&
 				(!earning_only || x.m === 'y') &&
 				(!raising_only || x.ra === 'y') &&
-				(x.n + ' ' + x.o).toLowerCase().includes(qy.toLowerCase())
+				(x.n + ' ' + x.o + ' ' + place_line(x.co, x.st)).toLowerCase().includes(qy.toLowerCase())
 		)
 	);
 
 	const total = $derived(data.p.length);
-	const live = $derived(data.p.filter((x) => x.r === 'l').length);
 	const earning = $derived(data.p.filter((x) => x.m === 'y' && is_fresh(x)).length);
 	const raising = $derived(data.p.filter((x) => x.ra === 'y' && is_fresh(x)).length);
-	const groups = $derived(
-		[...new Set(filtered.map((x) => x.c))]
-			.map((c) => {
-				const items = filtered
-					.filter((x) => x.c === c)
-					.sort(
-						(a, b) => (status_rank[a.r] ?? 3) - (status_rank[b.r] ?? 3) || a.n.localeCompare(b.n)
-					);
-				return { c, n: items[0]?.cn || sector_info[c]?.n || c, items };
-			})
-			.sort((a, b) => rank(a.c) - rank(b.c) || a.n.localeCompare(b.n))
-	);
+
+	const group_key = (x: P) =>
+		view === 'sector' ? (x.c ?? '') : view === 'country' ? (x.co ?? '') : x.co && x.st ? `${x.co}:${x.st}` : '';
+
+	const group_name = (k: string, items: P[]) => {
+		if (view === 'sector') return items[0]?.cn || sector_info[k]?.n || k || 'sector not given';
+		if (view === 'country') return country_name(k);
+		if (!k) return 'location not given';
+		const [co, st] = k.split(':');
+		return `${state_name(co, st)} · ${country_name(co)}`;
+	};
+
+	const groups = $derived.by(() => {
+		if (view === 'traction') return [];
+		const map = new Map<string, P[]>();
+		for (const x of filtered) {
+			const k = group_key(x);
+			if (!map.has(k)) map.set(k, []);
+			map.get(k)!.push(x);
+		}
+		return [...map]
+			.map(([k, items]) => ({ k, n: group_name(k, items), items: [...items].sort(by_momentum) }))
+			.sort((a, b) => {
+				if (!a.k !== !b.k) return a.k ? -1 : 1;
+				if (view === 'sector') return rank(a.k) - rank(b.k);
+				return b.items.length - a.items.length || a.n.localeCompare(b.n);
+			});
+	});
+
 	const is_filtering = $derived(qy !== '' || live_only || earning_only || raising_only);
 	const ranked = $derived([...filtered].sort(by_momentum));
 </script>
@@ -172,72 +203,68 @@
 	</section>
 
 	<section class="mx-auto max-w-5xl px-6 py-16">
-		<div class="mb-8 flex items-center gap-4 text-sm">
-			<button
-				type="button"
-				onclick={() => (by_sector = false)}
-				class={by_sector ? 'text-ink/50 hover:text-ink' : 'font-medium text-cobalt underline'}
-			>
-				by traction
-			</button>
-			<button
-				type="button"
-				onclick={() => (by_sector = true)}
-				class={by_sector ? 'font-medium text-cobalt underline' : 'text-ink/50 hover:text-ink'}
-			>
-				by sector
-			</button>
+		<div class="mb-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+			{#each views as [v, label] (v)}
+				<button
+					type="button"
+					onclick={() => (picked = v)}
+					class={view === v ? 'font-medium text-cobalt underline' : 'text-ink/50 hover:text-ink'}
+				>
+					{label}
+				</button>
+			{/each}
 		</div>
-		{#if !by_sector}
+		{#if view === 'traction'}
 			<div class="flex flex-col divide-y divide-ink/10 border-y border-ink/10">
 				{#each ranked as it (it.g)}
 					<DealCard p={it} />
 				{/each}
 			</div>
+		{:else}
+			<div class="flex flex-col gap-14">
+				{#each groups as g, i (g.k)}
+					<div id="s-{g.k}">
+						<button
+							type="button"
+							aria-expanded={open[g.k] ?? true}
+							onclick={() => (open[g.k] = !(open[g.k] ?? true))}
+							class="flex w-full items-center gap-3 bg-cobalt px-5 py-3 text-left text-white"
+						>
+							<span class="h-2.5 w-2.5 rounded-full {dot(g.k, i)}"></span>
+							<h2 class="font-display text-lg font-medium tracking-tight">
+								{g.n}
+							</h2>
+							<span class="ml-auto text-sm text-white/70">{g.items.length}</span>
+							<svg
+								viewBox="0 0 20 20"
+								fill="none"
+								class="h-4 w-4 shrink-0 transition-transform duration-300 {(open[g.k] ?? true)
+									? 'rotate-0'
+									: '-rotate-90'}"
+							>
+								<path
+									d="M5 7.5l5 5 5-5"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+						{#if open[g.k] ?? true}
+							<div
+								transition:slide={{ duration: 300, easing: cubicOut }}
+								class="mt-5 flex flex-col divide-y divide-ink/10 border-y border-ink/10"
+							>
+								{#each g.items as it (it.g)}
+									<DealCard p={it} />
+								{/each}
+							</div>
+						{/if}
+					</div>
+				{/each}
+			</div>
 		{/if}
-		<div class="flex flex-col gap-14" class:hidden={!by_sector}>
-			{#each groups as g (g.c)}
-				<div id="s-{g.c}">
-					<button
-						type="button"
-						aria-expanded={open[g.c] ?? true}
-						onclick={() => (open[g.c] = !(open[g.c] ?? true))}
-						class="flex w-full items-center gap-3 bg-cobalt px-5 py-3 text-left text-white"
-					>
-						<span class="h-2.5 w-2.5 rounded-full {sector_color[g.c] ?? 'bg-white/60'}"></span>
-						<h2 class="font-display text-lg font-medium tracking-tight">
-							{g.n}
-						</h2>
-						<span class="ml-auto text-sm text-white/70">{g.items.length}</span>
-						<svg
-							viewBox="0 0 20 20"
-							fill="none"
-							class="h-4 w-4 shrink-0 transition-transform duration-300 {(open[g.c] ?? true)
-								? 'rotate-0'
-								: '-rotate-90'}"
-						>
-							<path
-								d="M5 7.5l5 5 5-5"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					</button>
-					{#if open[g.c] ?? true}
-						<div
-							transition:slide={{ duration: 300, easing: cubicOut }}
-							class="mt-5 flex flex-col divide-y divide-ink/10 border-y border-ink/10"
-						>
-							{#each g.items as it (it.g)}
-								<DealCard p={it} />
-							{/each}
-						</div>
-					{/if}
-				</div>
-			{/each}
-		</div>
 		{#if is_filtering && !filtered.length}
 			<p class="mt-10 text-center text-ink/60">no products match your search.</p>
 		{/if}

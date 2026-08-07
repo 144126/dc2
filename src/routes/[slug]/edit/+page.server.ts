@@ -3,6 +3,7 @@ import { error, redirect } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { retrieve_one, upsert, remove, uuid_from } from '$lib/server/qdrant';
 import { list_sectors } from '$lib/server/sectors';
+import { country_label, slugify } from '$lib/places';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const pt = await retrieve_one(env, await uuid_from(params.slug));
@@ -42,7 +43,9 @@ export const actions: Actions = {
 			ra: v('ra'),
 			rt: v('ra') === 'y' ? v('rt') : '',
 			fp: v('fp'),
-			hj: String(Math.floor(Date.now() / 1000))
+			hj: String(Math.floor(Date.now() / 1000)),
+			co: country_label[v('co')] ? v('co') : '',
+			st: slugify(v('st'))
 		};
 		const sectors = await list_sectors(env);
 		const chosen_sector = sectors.find((s) => s.g === v('c'));

@@ -75,6 +75,8 @@ const points = seed.products.map((p) => {
 			ev: was.ev ?? '',
 			vd: was.vd ?? '',
 			hj: was.hj ?? '',
+			co: was.co ?? '',
+			st: was.st ?? '',
 			b: was.b ?? { n: '', e: '', p: '', l: '', c: '' },
 			j
 		}

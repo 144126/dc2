@@ -3,6 +3,7 @@
 	import { page } from '$app/state';
 	import { enhance } from '$app/forms';
 	import { sector_info } from '$lib/sectors';
+	import { place_line } from '$lib/places';
 	import { headline, stage_label, raise_label, verify_label, is_fresh, as_of, age_days } from '$lib/investor';
 	import { fmt_date, fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
@@ -39,7 +40,7 @@
 			{ k: 'email', v: b.e, href: b.e ? `mailto:${b.e}` : undefined },
 			{ k: 'phone', v: b.p },
 			{ k: 'linkedin', v: b.l, href: b.l },
-			{ k: 'location', v: b.c }
+			{ k: 'location', v: [b.c, place_line(p.co, p.st)].filter(Boolean).join(' · ') }
 		].filter((c) => c.v)
 	);
 
@@ -72,7 +73,9 @@
 </svelte:head>
 
 <div class="mx-auto max-w-5xl px-6 py-16">
-	<a href="/#s-{p.c}" class="text-sm text-ink/60 hover:text-cobalt hover:underline">← all products</a>
+	<a href="/?v=sector#s-{p.c}" class="text-sm text-ink/60 hover:text-cobalt hover:underline">
+		← all products
+	</a>
 
 	{#if page.url.searchParams.has('submitted')}
 		<div class="mt-6 rounded-lg bg-teal-brand/10 p-4 text-sm text-ink">

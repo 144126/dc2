@@ -3,6 +3,7 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { retrieve_one, upsert, uuid_from } from '$lib/server/qdrant';
 import { list_sectors, slugify } from '$lib/server/sectors';
+import { country_label } from '$lib/places';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.user) throw redirect(302, '/google?next=/submit');
@@ -54,7 +55,9 @@ export const actions: Actions = {
 			ra: v('ra'),
 			rt: v('ra') === 'y' ? v('rt') : '',
 			fp: v('fp'),
-			hj: String(Math.floor(Date.now() / 1000))
+			hj: String(Math.floor(Date.now() / 1000)),
+			co: country_label[v('co')] ? v('co') : '',
+			st: slugify(v('st'))
 		};
 
 		const payload = existing

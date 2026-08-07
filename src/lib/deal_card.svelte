@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { headline, stage_label, raise_label, verify_label, is_fresh, as_of } from '$lib/investor';
+	import { place_line } from '$lib/places';
 	import { fmt_num } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -8,6 +9,7 @@
 	const hd = $derived(headline(p));
 	const current = $derived(is_fresh(p));
 	const who = $derived(p.b?.n ?? '');
+	const place = $derived(place_line(p.co, p.st));
 	const initials = $derived(
 		who
 			.split(' ')
@@ -46,6 +48,7 @@
 		<p class="mt-1 text-sm text-ink/70">{p.o}</p>
 		<div class="mt-1 flex flex-wrap items-center gap-x-3 text-xs text-ink/50">
 			{#if p.sg && stage_label[p.sg]}<span>{stage_label[p.sg]}</span>{/if}
+			{#if place}<span>{place}</span>{/if}
 			{#if who}<span>{who.toLowerCase()}</span>{/if}
 		</div>
 	</div>

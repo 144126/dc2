@@ -5,11 +5,8 @@ import { sector_order, sector_info } from '$lib/sectors';
 
 export type Sector = { g: string; n: string };
 
-export const slugify = (s: string) =>
-	s
-		.toLowerCase()
-		.replace(/[^a-z0-9]+/g, '-')
-		.replace(/^-+|-+$/g, '');
+import { slugify } from '$lib/places';
+export { slugify };
 
 let seeded = false;
 async function seed(env: QEnv) {
