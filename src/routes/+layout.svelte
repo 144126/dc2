@@ -13,7 +13,7 @@
 	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
-<div class="flex min-h-screen flex-col bg-white text-ink">
+<div class="grain flex min-h-screen flex-col bg-paper text-ink">
 	<header class="border-b border-ink/10">
 		<nav class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-5">
 			<a href="/" class="flex items-center gap-2 font-display text-xl font-semibold tracking-tight text-ink">
@@ -21,15 +21,15 @@
 				devcircles
 			</a>
 			<div class="flex items-center gap-4 text-sm">
-				<a href="/raising" class="text-cobalt hover:underline">raising</a>
-				<a href="/submit" class="text-cobalt hover:underline">submit</a>
+				<a href="/raising" class="wipe text-cobalt">raising</a>
+				<a href="/submit" class="wipe text-cobalt">submit</a>
 				{#if data.u}
 					<span class="max-sm:hidden text-ink/60">{data.u.e}</span>
 					<form method="POST" action="/logout">
-						<button type="submit" class="text-cobalt hover:underline">sign out</button>
+						<button type="submit" class="wipe text-cobalt">sign out</button>
 					</form>
 				{:else}
-					<a href="/google" data-sveltekit-reload class="text-cobalt hover:underline">sign in with google</a>
+					<a href="/google" data-sveltekit-reload class="wipe text-cobalt">sign in with google</a>
 				{/if}
 			</div>
 		</nav>
@@ -45,10 +45,10 @@
 				<img src={favicon} alt="" class="h-5 w-5 opacity-60" />
 				devcircles community · {new Date().getFullYear()}
 			</span>
-			<a href="/#about" class="hover:underline">about</a>
-			<a href="/submit" class="hover:underline">submit</a>
-			<a href="https://www.linkedin.com/company/devcircles" target="_blank" rel="noopener noreferrer" class="hover:underline">linkedin</a>
-			<a href="https://www.instagram.com/dev_circles/" target="_blank" rel="noopener noreferrer" class="hover:underline">instagram</a>
+			<a href="/#about" class="wipe">about</a>
+			<a href="/submit" class="wipe">submit</a>
+			<a href="https://www.linkedin.com/company/devcircles" target="_blank" rel="noopener noreferrer" class="wipe">linkedin</a>
+			<a href="https://www.instagram.com/dev_circles/" target="_blank" rel="noopener noreferrer" class="wipe">instagram</a>
 		</div>
 	</footer>
 </div>

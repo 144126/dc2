@@ -38,7 +38,7 @@
 		class="mt-10 flex flex-col gap-8"
 	>
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">about you</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">about you</h2>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				your name
 				<input name="y" value={val('y')} class="rounded-md border border-ink/20 px-3 py-2" />
@@ -77,7 +77,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">about the product</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">about the product</h2>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				product name*
 				<input name="n" required value={val('n')} class="rounded-md border border-ink/20 px-3 py-2" />
@@ -116,7 +116,7 @@
 				>
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
-				where it can grow (optional)
+				what you haven't cracked yet (optional)
 				<textarea name="x" rows="3" class="rounded-md border border-ink/20 px-3 py-2"
 					>{val('x')}</textarea
 				>
@@ -124,7 +124,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">metrics (optional)</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">metrics (optional)</h2>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				launch date
 				<input name="d" type="date" value={val('d')} class="rounded-md border border-ink/20 px-3 py-2" />
@@ -176,7 +176,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">for investors</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">for investors</h2>
 			<p class="text-sm text-ink/60">
 				one real number is worth more here than three paragraphs — you can add it later if you
 				don't have it yet.

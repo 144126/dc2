@@ -89,7 +89,7 @@
 	{/if}
 
 	<div class="mt-6 flex flex-wrap items-center gap-3">
-		<span class="text-xs tracking-wide text-cobalt uppercase">{p.cn || sector_info[p.c]?.n}</span>
+		<span class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">{p.cn || sector_info[p.c]?.n}</span>
 		<StatusPill r={p.r} />
 		{#if is_owner}
 			<a href="/{p.g}/edit" class="ml-auto text-sm text-cobalt hover:underline">edit your page</a>
@@ -154,19 +154,19 @@
 		<div class="mt-12 grid gap-10 sm:grid-cols-3">
 			{#if detail}
 				<div>
-					<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">what it does</h2>
+					<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">what it does</h2>
 					<p class="mt-2 text-ink/75">{detail}</p>
 				</div>
 			{/if}
 			{#if p.h}
 				<div>
-					<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">why it matters</h2>
+					<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">why it matters</h2>
 					<p class="mt-2 text-ink/75">{p.h}</p>
 				</div>
 			{/if}
 			{#if p.x}
 				<div>
-					<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">where it can grow</h2>
+					<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">what we haven't cracked yet</h2>
 					<p class="mt-2 text-ink/75">{p.x}</p>
 				</div>
 			{/if}

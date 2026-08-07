@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import favicon from '$lib/assets/favicon.png';
 	import { slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import { page } from '$app/state';
@@ -8,6 +7,8 @@
 	import { is_fresh, by_momentum } from '$lib/investor';
 	import { country_name, state_name, place_line } from '$lib/places';
 	import DealCard from '$lib/deal_card.svelte';
+	import CircleField from '$lib/circle_field.svelte';
+	import { reveal } from '$lib/reveal';
 	import { fmt_date } from '$lib/fmt';
 	import StatusPill from '$lib/status_pill.svelte';
 
@@ -21,6 +22,27 @@
 	let live_only = $state(false);
 	let earning_only = $state(false);
 	let raising_only = $state(false);
+	let community = $state('');
+
+	const community_key = (x: P) => (x.co ? `${x.co}:${x.st ?? ''}` : '');
+
+	const communities = $derived.by(() => {
+		const counts = new Map<string, number>();
+		for (const x of data.p) {
+			const k = community_key(x);
+			if (k) counts.set(k, (counts.get(k) ?? 0) + 1);
+		}
+		return [...counts]
+			.map(([k, count]) => {
+				const [co, st] = k.split(':');
+				return {
+					k,
+					label: st ? `${state_name(co, st)} · ${country_name(co)}` : `${country_name(co)} — community not given`,
+					count
+				};
+			})
+			.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+	});
 
 	const views = [
 		['traction', 'by traction'],
@@ -46,6 +68,7 @@
 				(!live_only || x.r === 'l') &&
 				(!earning_only || x.m === 'y') &&
 				(!raising_only || x.ra === 'y') &&
+				(!community || community_key(x) === community) &&
 				(x.n + ' ' + x.o + ' ' + place_line(x.co, x.st)).toLowerCase().includes(qy.toLowerCase())
 		)
 	);
@@ -82,7 +105,9 @@
 			});
 	});
 
-	const is_filtering = $derived(qy !== '' || live_only || earning_only || raising_only);
+	const is_filtering = $derived(
+		qy !== '' || live_only || earning_only || raising_only || community !== ''
+	);
 	const ranked = $derived([...filtered].sort(by_momentum));
 </script>
 
@@ -99,31 +124,27 @@
 	/>
 </svelte:head>
 
-<section class="relative overflow-hidden">
-	<div
-		class="absolute top-8 right-10 h-24 w-24 rounded-full border-4 border-ochre/40 max-md:hidden"
-	></div>
-	<div class="absolute top-32 right-40 h-10 w-10 rotate-45 bg-coral/20 max-md:hidden"></div>
-	<div class="absolute bottom-6 left-8 h-16 w-16 rounded-full bg-teal-brand/10 max-md:hidden"></div>
-	<div
-		class="absolute right-24 bottom-10 h-14 w-14 rotate-12 border-4 border-plum/30 max-md:hidden"
-	></div>
+<section class="mx-auto max-w-5xl px-6 pt-16 pb-10 sm:pt-24">
+	<p class="font-mono text-xs tracking-[0.18em] text-cobalt uppercase">
+		01 — industry insight report
+	</p>
 
-	<div class="relative mx-auto max-w-5xl px-6 py-20">
-		<p class="font-display text-sm font-semibold tracking-widest text-cobalt uppercase">
-			industry insight report
+	<h1
+		class="font-display mt-6 overflow-hidden text-display leading-[0.88] font-semibold tracking-[-0.035em] text-ink"
+	>
+		<span class="animate-rise block">devcircles</span>
+	</h1>
+
+	<div class="mt-10 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
+		<p class="max-w-lg text-lede leading-[1.35] text-ink/75">
+			<span class="tnum text-ink">{total} companies</span> built by this community, across
+			<span class="tnum text-ink">{communities.length}</span> circles. every link checked by hand, every
+			figure dated and labelled.
 		</p>
-		<div class="mt-4 flex items-center gap-4">
-			<img src={favicon} alt="" class="h-12 w-12 shrink-0" />
-			<h1 class="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-				devcircles
-			</h1>
-		</div>
-		<p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink/70">
-			{total} companies built by members of the devcircles community. every link checked by hand,
-			every figure labelled as verified or self-reported. sorted so the ones with the most traction
-			come first.
-		</p>
+
+		{#if communities.length}
+			<CircleField circles={communities} bind:selected={community} />
+		{/if}
 	</div>
 </section>
 
@@ -196,8 +217,19 @@
 			>
 				live only
 			</button>
+			{#if community}
+				<button
+					type="button"
+					onclick={() => (community = '')}
+					class="rounded-full border border-coral bg-coral px-3 py-1.5 text-xs font-medium tracking-wide text-white uppercase"
+				>
+					{communities.find((c) => c.k === community)?.label} ✕
+				</button>
+			{/if}
 			{#if is_filtering}
-				<span class="text-sm text-ink/50">{filtered.length} match{filtered.length === 1 ? '' : 'es'}</span>
+				<span class="tnum text-sm text-ink/50">
+					{filtered.length} match{filtered.length === 1 ? '' : 'es'}
+				</span>
 			{/if}
 		</div>
 	</section>
@@ -216,8 +248,10 @@
 		</div>
 		{#if view === 'traction'}
 			<div class="flex flex-col divide-y divide-ink/10 border-y border-ink/10">
-				{#each ranked as it (it.g)}
-					<DealCard p={it} />
+				{#each ranked as it, i (it.g)}
+					<div use:reveal={Math.min(i, 8) * 45}>
+						<DealCard p={it} />
+					</div>
 				{/each}
 			</div>
 		{:else}

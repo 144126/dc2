@@ -34,7 +34,7 @@
 		class="mt-10 flex flex-col gap-8"
 	>
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">about the product</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">about the product</h2>
 			<SectorPicker name="c" value={p.c} label={p.cn ?? sector_info[p.c]?.n ?? ''} />
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				product link
@@ -59,7 +59,7 @@
 				>
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
-				where it can grow
+				what we haven't cracked yet
 				<textarea name="x" rows="3" class="rounded-md border border-ink/20 px-3 py-2"
 					>{p.x}</textarea
 				>
@@ -67,7 +67,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">builder contact</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">builder contact</h2>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				name
 				<input name="y" value={b.n} class="rounded-md border border-ink/20 px-3 py-2" />
@@ -117,7 +117,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">metrics</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">metrics</h2>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				launch date
 				<input name="d" type="date" value={p.d} class="rounded-md border border-ink/20 px-3 py-2" />
@@ -169,7 +169,7 @@
 		</div>
 
 		<div class="flex flex-col gap-4">
-			<h2 class="text-sm font-semibold tracking-wide text-cobalt uppercase">for investors</h2>
+			<h2 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">for investors</h2>
 			<p class="text-sm text-ink/60">
 				this is the part investors read first. one real number beats three paragraphs.
 			</p>
