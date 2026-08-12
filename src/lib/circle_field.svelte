@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { pack, radius_for, view_box, type Disc } from '$lib/pack';
 
-	type Circle = { k: string; label: string; count: number };
+	type Circle = { k: string; label: string; short: string; count: number };
 
 	let {
 		circles,
@@ -22,7 +22,7 @@
 	<svg
 		viewBox={box}
 		role="group"
-		aria-label="devcircles communities, sized by how many companies each has produced"
+		aria-label="the sectors this community builds in, each sized by how many companies it has produced"
 		class="field w-full"
 	>
 		{#each ordered as c, i (c.k)}
@@ -62,12 +62,29 @@
 						stroke-width="2"
 					/>
 				{/if}
-				{#if d.r > 26}
+				{#if d.r > 36}
+					<text
+						x={d.x}
+						y={d.y - 2}
+						text-anchor="middle"
+						class="pointer-events-none fill-paper font-display text-[13px] font-semibold"
+					>
+						{c.short}
+					</text>
+					<text
+						x={d.x}
+						y={d.y + 15}
+						text-anchor="middle"
+						class="tnum pointer-events-none fill-paper/70 font-display text-[12px]"
+					>
+						{c.count}
+					</text>
+				{:else if d.r > 22}
 					<text
 						x={d.x}
 						y={d.y + 5}
 						text-anchor="middle"
-						class="tnum pointer-events-none fill-paper font-display text-[15px] font-semibold"
+						class="tnum pointer-events-none fill-paper font-display text-[13px] font-semibold"
 					>
 						{c.count}
 					</text>
@@ -82,7 +99,7 @@
 			<span class="text-ink">{c?.label}</span> — {c?.count}
 			{c?.count === 1 ? 'company' : 'companies'}{selected === active ? ' · filtering' : ''}
 		{:else}
-			every circle is a devcircles community, sized by what it has built. touch one to filter.
+			every circle is a sector, sized by what this community has built there. touch one to filter.
 		{/if}
 	</figcaption>
 </figure>

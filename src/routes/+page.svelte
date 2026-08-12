@@ -22,24 +22,20 @@
 	let live_only = $state(false);
 	let earning_only = $state(false);
 	let raising_only = $state(false);
-	let community = $state('');
+	let circle = $state('');
 
-	const community_key = (x: P) => (x.co ? `${x.co}:${x.st ?? ''}` : '');
-
-	const communities = $derived.by(() => {
+	const circles = $derived.by(() => {
 		const counts = new Map<string, number>();
+		const named = new Map<string, string>();
 		for (const x of data.p) {
-			const k = community_key(x);
-			if (k) counts.set(k, (counts.get(k) ?? 0) + 1);
+			if (!x.c) continue;
+			counts.set(x.c, (counts.get(x.c) ?? 0) + 1);
+			if (x.cn) named.set(x.c, x.cn);
 		}
 		return [...counts]
 			.map(([k, count]) => {
-				const [co, st] = k.split(':');
-				return {
-					k,
-					label: st ? `${state_name(co, st)} · ${country_name(co)}` : `${country_name(co)} — community not given`,
-					count
-				};
+				const label = named.get(k) || sector_info[k]?.n || k;
+				return { k, label, short: label.split(/[\s&,]/)[0], count };
 			})
 			.sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
 	});
@@ -68,7 +64,7 @@
 				(!live_only || x.r === 'l') &&
 				(!earning_only || x.m === 'y') &&
 				(!raising_only || x.ra === 'y') &&
-				(!community || community_key(x) === community) &&
+				(!circle || x.c === circle) &&
 				(x.n + ' ' + x.o + ' ' + place_line(x.co, x.st)).toLowerCase().includes(qy.toLowerCase())
 		)
 	);
@@ -106,7 +102,7 @@
 	});
 
 	const is_filtering = $derived(
-		qy !== '' || live_only || earning_only || raising_only || community !== ''
+		qy !== '' || live_only || earning_only || raising_only || circle !== ''
 	);
 	const ranked = $derived([...filtered].sort(by_momentum));
 </script>
@@ -138,12 +134,12 @@
 	<div class="mt-10 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
 		<p class="max-w-lg text-lede leading-[1.35] text-ink/75">
 			<span class="tnum text-ink">{total} companies</span> built by this community, across
-			<span class="tnum text-ink">{communities.length}</span> circles. every link checked by hand, every
+			<span class="tnum text-ink">{circles.length}</span> sectors. every link checked by hand, every
 			figure dated and labelled.
 		</p>
 
-		{#if communities.length}
-			<CircleField circles={communities} bind:selected={community} />
+		{#if circles.length}
+			<CircleField {circles} bind:selected={circle} />
 		{/if}
 	</div>
 </section>
@@ -217,13 +213,13 @@
 			>
 				live only
 			</button>
-			{#if community}
+			{#if circle}
 				<button
 					type="button"
-					onclick={() => (community = '')}
+					onclick={() => (circle = '')}
 					class="rounded-full border border-coral bg-coral px-3 py-1.5 text-xs font-medium tracking-wide text-white uppercase"
 				>
-					{communities.find((c) => c.k === community)?.label} ✕
+					{circles.find((c) => c.k === circle)?.label} ✕
 				</button>
 			{/if}
 			{#if is_filtering}
