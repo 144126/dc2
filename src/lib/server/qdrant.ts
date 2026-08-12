@@ -1,4 +1,5 @@
 import { QdrantClient } from '@qdrant/js-client-rest';
+import type { Filter } from '../filter';
 
 export type SecretVal = string | { get?: () => Promise<string> } | undefined;
 
@@ -47,11 +48,8 @@ export async function uuid_from(s: string): Promise<string> {
 	return `${x.slice(0, 8)}-${x.slice(8, 12)}-4${x.slice(13, 16)}-8${x.slice(17, 20)}-${x.slice(20, 32)}`;
 }
 
-export type Cond =
-	| { key: string; match: { value: string | number } }
-	| { key: string; range: { gte?: number; lte?: number } };
-export const eq = (key: string, value: string | number): Cond => ({ key, match: { value } });
-export const f = (...conds: Cond[]) => ({ must: conds });
+export { eq, txt, rng, f, f_or } from '../filter';
+export type { Cond, Filter } from '../filter';
 
 type Pt = { id: string | number; payload: Record<string, unknown> | null };
 
@@ -59,22 +57,36 @@ let ensured = false;
 export async function ensure(env: QEnv): Promise<void> {
 	if (ensured) return;
 	const c = await qc(env);
-	await c.createPayloadIndex(C, { field_name: 'g', field_schema: 'keyword' }).catch(() => {});
-	await c.createPayloadIndex(C, { field_name: 's', field_schema: 'keyword' }).catch(() => {});
-	await c.createPayloadIndex(C, { field_name: 't', field_schema: 'keyword' }).catch(() => {});
+	for (const k of ['g', 's', 't', 'cv', 'mf', 'mt', 'ma', 'mb', 'pg'] as const)
+		await c.createPayloadIndex(C, { field_name: k, field_schema: 'keyword' }).catch(() => {});
+	await c.createPayloadIndex(C, { field_name: 'md', field_schema: 'integer' }).catch(() => {});
+	await c
+		.createPayloadIndex(C, {
+			field_name: 'mx',
+			field_schema: {
+				type: 'text',
+				tokenizer: 'word',
+				lowercase: true,
+				min_token_len: 2,
+				max_token_len: 30
+			}
+		})
+		.catch(() => {});
 	ensured = true;
 }
 
 export async function scroll(
 	env: QEnv,
-	filter: ReturnType<typeof f>,
-	limit = 1000
+	filter: Filter,
+	limit = 1000,
+	order_by?: { key: string; direction: 'asc' | 'desc' }
 ): Promise<Pt[]> {
 	const r = await (await qc(env)).scroll(C, {
 		filter,
 		limit,
 		with_payload: true,
-		with_vector: false
+		with_vector: false,
+		...(order_by ? { order_by } : {})
 	});
 	return r.points as Pt[];
 }
@@ -90,6 +102,22 @@ export async function upsert(
 ): Promise<void> {
 	if (!points.length) return;
 	await (await qc(env)).upsert(C, { points: points.map((p) => ({ ...p, vector: { [V]: ZV } })) });
+}
+
+export async function upsert_novec(
+	env: QEnv,
+	points: { id: string; payload: Record<string, unknown> }[]
+): Promise<void> {
+	if (!points.length) return;
+	await (await qc(env)).upsert(C, { points: points.map((p) => ({ ...p, vector: {} })) });
+}
+
+export async function set_payload(
+	env: QEnv,
+	id: string,
+	payload: Record<string, unknown>
+): Promise<void> {
+	await (await qc(env)).setPayload(C, { payload, points: [id] });
 }
 
 export async function remove(env: QEnv, id: string): Promise<void> {

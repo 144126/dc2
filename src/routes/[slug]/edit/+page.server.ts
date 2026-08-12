@@ -33,7 +33,8 @@ export const actions: Actions = {
 			e: fd.get('pe') ? v('e') : '',
 			p: v('p'),
 			l: v('i'),
-			c: v('v')
+			c: v('v'),
+			r: v('br')
 		};
 		const metrics = { d: v('d'), q: v('q'), m: v('m'), a: v('a'), z: v('z'), k: v('k') };
 		const investor = {
@@ -67,6 +68,11 @@ export const actions: Actions = {
 			l,
 			c,
 			cn,
+			ci: v('ci'),
+			sc: v('sc'),
+			ts: v('ts'),
+			gh: v('gh'),
+			dk: v('dk'),
 			o: v('o'),
 			w: v('w'),
 			h: v('h'),

@@ -64,6 +64,32 @@
 					>{p.x}</textarea
 				>
 			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				cover image (link)
+				<input name="ci" type="url" value={p.ci} placeholder="https://" class="rounded-md border border-ink/20 px-3 py-2" />
+				<span class="text-xs text-ink/50">
+					the wide picture at the top of your page. leave it empty and we draw one from your sector
+					colour.
+				</span>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				screenshots (one link per line)
+				<textarea name="sc" rows="3" placeholder="https://…" class="rounded-md border border-ink/20 px-3 py-2"
+					>{p.sc}</textarea
+				>
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				tech stack (comma separated)
+				<input name="ts" value={p.ts} placeholder="sveltekit, postgres, cloudflare" class="rounded-md border border-ink/20 px-3 py-2" />
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				source code (link)
+				<input name="gh" type="url" value={p.gh} placeholder="https://github.com/…" class="rounded-md border border-ink/20 px-3 py-2" />
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				documentation (link)
+				<input name="dk" type="url" value={p.dk} placeholder="https://" class="rounded-md border border-ink/20 px-3 py-2" />
+			</label>
 		</div>
 
 		<div class="flex flex-col gap-4">
@@ -71,6 +97,10 @@
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				name
 				<input name="y" value={b.n} class="rounded-md border border-ink/20 px-3 py-2" />
+			</label>
+			<label class="flex flex-col gap-1 text-sm text-ink/70">
+				your role
+				<input name="br" value={b.r} placeholder="founder · lead engineer · designer" class="rounded-md border border-ink/20 px-3 py-2" />
 			</label>
 			<label class="flex flex-col gap-1 text-sm text-ink/70">
 				email (only shown publicly if you check the box below)
