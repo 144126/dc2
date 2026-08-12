@@ -80,8 +80,10 @@ export async function mark_read(env: QEnv, c: Conv, me: string): Promise<void> {
 
 // ponytail: unread_total scrolls every conversation the user is in on every page load.
 // Fine at this scale; move the counter into its own row, or a Durable Object like x2's
-// ChatHub, if a person ever has hundreds of threads.
+// ChatHub, if a person ever has hundreds of threads. It swallows its own failure on
+// purpose — this runs in the root layout, so a chat-side outage must cost a badge, not
+// every page on the site.
 export async function unread_total(env: QEnv, me: string): Promise<number> {
-	const convs = await list_convs(env, me);
+	const convs = await list_convs(env, me).catch(() => []);
 	return convs.reduce((n, c) => n + Number(c[unread_key(c, me)] ?? 0), 0);
 }

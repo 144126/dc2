@@ -53,26 +53,32 @@ export type { Cond, Filter } from '../filter';
 
 type Pt = { id: string | number; payload: Record<string, unknown> | null };
 
-let ensured = false;
-export async function ensure(env: QEnv): Promise<void> {
-	if (ensured) return;
+// `wait: true` is load-bearing: qdrant refuses an ordered scroll on an unindexed key, so
+// returning before the index is applied loses the race with the very first inbox load.
+async function provision(env: QEnv): Promise<void> {
 	const c = await qc(env);
 	for (const k of ['g', 's', 't', 'cv', 'mf', 'mt', 'ma', 'mb', 'pg'] as const)
-		await c.createPayloadIndex(C, { field_name: k, field_schema: 'keyword' }).catch(() => {});
-	await c.createPayloadIndex(C, { field_name: 'md', field_schema: 'integer' }).catch(() => {});
-	await c
-		.createPayloadIndex(C, {
-			field_name: 'mx',
-			field_schema: {
-				type: 'text',
-				tokenizer: 'word',
-				lowercase: true,
-				min_token_len: 2,
-				max_token_len: 30
-			}
-		})
-		.catch(() => {});
-	ensured = true;
+		await c.createPayloadIndex(C, { field_name: k, field_schema: 'keyword', wait: true });
+	await c.createPayloadIndex(C, { field_name: 'md', field_schema: 'integer', wait: true });
+	await c.createPayloadIndex(C, {
+		field_name: 'mx',
+		field_schema: {
+			type: 'text',
+			tokenizer: 'word',
+			lowercase: true,
+			min_token_len: 2,
+			max_token_len: 30
+		},
+		wait: true
+	});
+}
+
+let ensured: Promise<void> | null = null;
+export function ensure(env: QEnv): Promise<void> {
+	return (ensured ??= provision(env).catch((e) => {
+		ensured = null;
+		throw e;
+	}));
 }
 
 export async function scroll(
