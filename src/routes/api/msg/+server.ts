@@ -3,11 +3,12 @@ import { error, json } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { retrieve_one, uuid_from } from '$lib/server/qdrant';
 import { get_conv, get_thread, send_msg } from '$lib/server/chat';
+import { by_handle } from '$lib/server/profile';
 import { in_conv, norm, peer_of } from '$lib/chat';
 
 export const POST: RequestHandler = async ({ request, locals }) => {
 	if (!locals.user) throw error(401, 'sign in to send a message');
-	const body = (await request.json()) as { pg?: string; id?: string; x?: string };
+	const body = (await request.json()) as { pg?: string; hn?: string; id?: string; x?: string };
 	const text = (body.x ?? '').trim().slice(0, 4000);
 	if (!text) throw error(400, 'write something first');
 	const me = norm(locals.user.e);
@@ -16,6 +17,16 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 		const c = await get_conv(env, body.id);
 		if (!c || !in_conv(c, me)) throw error(403, 'not your conversation');
 		const r = await send_msg(env, me, peer_of(c, me), text, c.pg, c.pn);
+		return json({ id: r.id, m: r.m });
+	}
+
+	if (body.hn) {
+		const hit = await by_handle(env, body.hn.trim());
+		if (!hit) throw error(404, 'no such builder');
+		const to = norm(hit.email);
+		if (!to) throw error(400, 'that builder cannot be messaged yet');
+		if (to === me) throw error(400, 'that is you');
+		const r = await send_msg(env, me, to, text, '', '');
 		return json({ id: r.id, m: r.m });
 	}
 

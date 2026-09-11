@@ -64,15 +64,21 @@ sveltekit site listing products built by the devcircles community. collection `i
 | --- | --- |
 | p | product |
 | sec | sector |
+| bu | builder profile, `{ e email, hn handle, nm name, bo bio, pf photo, cb cover, lc place, lk site, li linkedin, tg tags, j joined }` |
 | x | investor interest, `{ pg product slug, nm name, em email, fm firm, ms message, j epoch }` |
 | m | message, `{ cv conversation id, mf from email, mt to email, mx text, md epoch ms, pg product slug }` |
 | cv | conversation, `{ cv id, ma lower email, mb higher email, pg slug, pn product name, mx last preview, md epoch ms, ua unread for ma, ub unread for mb }` |
+| rm | room, `{ hn handle, nm name, ds about, ow owner email, mb member emails, tg tags, mx last preview, md last activity ms, j created ms }` |
+| rg | room message, `{ rh room handle, mf from email, mx text, md epoch ms }` |
 
 `cv`, the conversation id, is `[a, b].sort().join('|')` of the two lowercased emails, so both
 sides derive the same string and `ma` is always the lower one. `mx` is stored as plain text
 with a Qdrant full-text index, which is what makes search work across every chat at once.
-Message and conversation rows are written with `upsert_novec` — never `upsert`, which would
-attach a 4096-dim zero vector to every message.
+Message, conversation, profile, and room rows are written with `upsert_novec` — never `upsert`, which would
+attach a 4096-dim zero vector to every chat row.
+
+people live at `/people`. rooms live at `/r` and `/r/<handle>`. inbox threads show the other
+person's name and link to `/u/<handle>` when they have a profile.
 
 ## dev
 

@@ -260,18 +260,24 @@
 					</div>
 				{/if}
 
-				{#if b.n || p.fp}
+				{#if b.n || p.fp || data.hn}
 					<div class={stack.length ? 'border-t border-ink/10 pt-6' : ''}>
 						<h3 class="font-mono text-xs tracking-[0.16em] text-cobalt uppercase">project lead</h3>
-						<div class="mt-3 flex items-center gap-3">
+						<svelte:element
+							this={data.hn ? 'a' : 'div'}
+							href={data.hn ? `/u/${data.hn}` : undefined}
+							class="mt-3 flex items-center gap-3 {data.hn ? 'group' : ''}"
+						>
 							{#if p.fp}
 								<img src={p.fp} alt="" loading="lazy" class="h-12 w-12 rounded-full object-cover" />
 							{/if}
 							<div>
-								<div class="font-display font-medium text-ink">{b.n}</div>
+								<div class="font-display font-medium text-ink {data.hn ? 'group-hover:text-cobalt' : ''}">
+									{b.n || (data.hn ? '@' + data.hn : '')}
+								</div>
 								{#if b.r}<div class="text-sm text-ink/60">{b.r}</div>{/if}
 							</div>
-						</div>
+						</svelte:element>
 						{#if contacts.length}
 							<dl class="mt-4 flex flex-col gap-2 text-sm">
 								{#each contacts as c (c.k)}
@@ -339,7 +345,7 @@
 	</div>
 
 	{#if data.can_msg}
-		<MessageBuilder pg={p.g} who={b.n ?? ''} signed_in={!!data.u} />
+		<MessageBuilder pg={p.g} who={b.n ?? ''} signed_in={!!data.u} back="/{p.g}" />
 	{/if}
 
 	<Interest pg={p.g} direct={b.e ?? ''} />

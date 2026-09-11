@@ -31,8 +31,19 @@ export const GET: RequestHandler = async ({ url, cookies, locals }) => {
 	console.log('[GOOGLE] params', { has_code: !!code, state });
 
 	const next = url.searchParams.get('next');
-	if (!code && next && /^\/[a-z0-9\-/]*$/.test(next)) {
-		cookies.set('oauth_next', next, { path: '/', httpOnly: true, maxAge: 600, sameSite: 'lax' });
+	if (!code && next) {
+		try {
+			const dest = new URL(next, 'https://local');
+			if (dest.origin === 'https://local')
+				cookies.set('oauth_next', dest.pathname + dest.search, {
+					path: '/',
+					httpOnly: true,
+					maxAge: 600,
+					sameSite: 'lax'
+				});
+		} catch {
+			/* ignore a bad next */
+		}
 	}
 
 	if (code) {

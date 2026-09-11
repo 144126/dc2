@@ -67,7 +67,13 @@
 		<Icon n="back" c="h-4 w-4" /> inbox
 	</a>
 
-	<h1 class="mt-4 font-display text-2xl font-semibold tracking-tight text-ink">{data.who}</h1>
+	<h1 class="mt-4 font-display text-2xl font-semibold tracking-tight text-ink">
+		{#if data.to}
+			<a href={data.to} class="hover:text-cobalt">{data.who}</a>
+		{:else}
+			{data.who}
+		{/if}
+	</h1>
 	{#if data.pn}
 		<p class="mt-1 text-sm text-ink/60">
 			about <a href="/{data.pg}" class="text-cobalt hover:underline">{data.pn.toLowerCase()}</a>

@@ -93,6 +93,7 @@
 							<span class="min-w-0 flex-1">
 								<span class="flex flex-wrap items-baseline gap-x-3">
 									<span class="font-display font-medium text-ink">{r.who}</span>
+									{#if r.at}<span class="text-xs text-ink/40">{r.at}</span>{/if}
 									{#if r.pn}<span class="text-xs text-ink/50">about {r.pn.toLowerCase()}</span>{/if}
 									<span class="ml-auto text-xs text-ink/50">{when(r.md)}</span>
 								</span>

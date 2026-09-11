@@ -57,7 +57,7 @@ type Pt = { id: string | number; payload: Record<string, unknown> | null };
 // returning before the index is applied loses the race with the very first inbox load.
 async function provision(env: QEnv): Promise<void> {
 	const c = await qc(env);
-	for (const k of ['g', 's', 't', 'cv', 'mf', 'mt', 'ma', 'mb', 'pg'] as const)
+	for (const k of ['g', 's', 't', 'e', 'hn', 'cv', 'mf', 'mt', 'ma', 'mb', 'pg', 'rh'] as const)
 		await c.createPayloadIndex(C, { field_name: k, field_schema: 'keyword', wait: true });
 	await c.createPayloadIndex(C, { field_name: 'md', field_schema: 'integer', wait: true });
 	await c.createPayloadIndex(C, {

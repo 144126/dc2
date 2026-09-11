@@ -21,8 +21,10 @@
 				devcircles
 			</a>
 			<div class="flex items-center gap-4 text-sm">
-				<a href="/raising" class="wipe text-cobalt">raising</a>
-				<a href="/submit" class="wipe text-cobalt">submit</a>
+				<a href="/people" class="wipe text-cobalt">people</a>
+				<a href="/r" class="wipe text-cobalt">rooms</a>
+				<a href="/raising" class="wipe max-sm:hidden text-cobalt">raising</a>
+				<a href="/submit" class="wipe max-sm:hidden text-cobalt">submit</a>
 				{#if data.u}
 					<a href="/inbox" class="wipe inline-flex items-center gap-1 text-cobalt">
 						inbox
@@ -32,7 +34,7 @@
 							>
 						{/if}
 					</a>
-					<span class="max-sm:hidden text-ink/60">{data.u.e}</span>
+					<a href="/profile" class="wipe max-sm:hidden text-ink/60">{data.u.e}</a>
 					<form method="POST" action="/logout">
 						<button type="submit" class="wipe text-cobalt">sign out</button>
 					</form>
@@ -62,6 +64,8 @@
 			<div class="flex flex-col gap-4 md:items-end">
 				<nav class="flex flex-wrap gap-6">
 					<a href="/#about" class="wipe">about</a>
+					<a href="/people" class="wipe">people</a>
+					<a href="/r" class="wipe">rooms</a>
 					<a href="/raising" class="wipe">raising</a>
 					<a href="/submit" class="wipe">submit</a>
 					<a href="https://www.linkedin.com/company/devcircles" target="_blank" rel="noopener noreferrer" class="wipe">linkedin</a>

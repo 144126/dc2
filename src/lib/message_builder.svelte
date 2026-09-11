@@ -3,7 +3,13 @@
 	import { ctrl_enter } from '$lib/ctrl_enter';
 	import Icon from '$lib/icon.svelte';
 
-	let { pg, who, signed_in }: { pg: string; who: string; signed_in: boolean } = $props();
+	let {
+		pg = '',
+		hn = '',
+		who,
+		signed_in,
+		back
+	}: { pg?: string; hn?: string; who: string; signed_in: boolean; back: string } = $props();
 
 	let text = $state('');
 	let busy = $state(false);
@@ -18,7 +24,7 @@
 			const r = await fetch('/api/msg', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
-				body: JSON.stringify({ pg, x: text })
+				body: JSON.stringify(pg ? { pg, x: text } : { hn, x: text })
 			});
 			if (!r.ok) throw new Error((await r.text()) || 'that did not send');
 			const { id } = (await r.json()) as { id: string };
@@ -71,7 +77,7 @@
 	{:else}
 		<p class="mt-2 text-ink/70">sign in and your message goes straight to their devcircles inbox.</p>
 		<a
-			href="/google?next=/{pg}"
+			href="/google?next={back}"
 			data-sveltekit-reload
 			class="mt-4 inline-block rounded-full bg-cobalt px-6 py-3 text-sm font-medium text-white hover:bg-cobalt/90"
 		>
