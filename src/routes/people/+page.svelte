@@ -84,14 +84,17 @@
 								] ?? 'bg-cobalt'}"
 							>
 								<span class="font-display text-lg font-semibold text-white">
-									{(p.nm || p.hn).slice(0, 1).toUpperCase()}
+									{p.hn.slice(0, 1).toUpperCase()}
 								</span>
 							</div>
 						{/if}
 						<span class="min-w-0 flex-1">
-							<span class="flex flex-wrap items-baseline gap-x-3">
-								<span class="font-display font-medium text-ink">{p.nm}</span>
-								{#if p.has}<span class="text-xs text-ink/50">@{p.hn}</span>{/if}
+							<span class="flex flex-wrap items-baseline gap-x-2">
+								<span class="font-display font-medium text-ink">@{p.hn}</span>
+								{#if p.pn}
+									<span class="text-sm text-ink/40">·</span>
+									<span class="text-sm text-ink/50">{p.pn.toLowerCase()}</span>
+								{/if}
 								{#if p.like}
 									<span class="ml-auto text-xs text-cobalt">{p.like} in common</span>
 								{/if}

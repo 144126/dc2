@@ -8,6 +8,7 @@ export type Person = {
 	hn: string;
 	to: string;
 	nm: string;
+	pn: string;
 	bo: string;
 	pf: string;
 	lc: string;
@@ -71,7 +72,8 @@ export async function list_people(
 		const person = {
 			hn,
 			to: prof?.hn ? '/u/' + prof.hn : products[0]?.g ? '/' + products[0].g : '',
-			nm: nm || products[0]?.n || hn,
+			nm,
+			pn: products[0]?.n ?? '',
 			bo: prof?.bo ?? '',
 			pf: prof?.pf ?? '',
 			lc: prof?.lc ?? '',
@@ -120,5 +122,5 @@ export async function list_people(
 				);
 	}
 	const out = sector ? rows.filter((p) => p.cs.includes(sector)) : rows;
-	return out.sort((a, b) => b.like - a.like || b.n - a.n || a.nm.localeCompare(b.nm));
+	return out.sort((a, b) => b.like - a.like || b.n - a.n || a.hn.localeCompare(b.hn));
 }
